@@ -1,0 +1,10 @@
+name: AdvancedPluginManager
+author: MintoD
+version: 1.0.0
+api: [ 3.0.0 ]
+main: MintoD\APM\APM
+
+permissions:
+  advancedpluginmanager.cmd:
+    description: Allows player to use Advanced Plugin Manager commands
+    default: op
