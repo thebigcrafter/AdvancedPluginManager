@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace MintoD\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
-use jojoe77777\FormAPI\SimpleForm;
-use MintoD\APM\forms\HelpForm;
+use jojoe77777\FormAPI\CustomForm;
+use MintoD\APM\forms\RepoForm;
 use MintoD\APM\utils\Notifier;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 
-class HelpCommand extends BaseSubCommand
+class AddReposCommand extends BaseSubCommand
 {
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(HelpForm::getHelpForm());
+            $sender->sendForm(RepoForm::getRepoForm());
         } else {
             $sender->sendMessage(Notifier::error("Please use this command in-game"));
         }
@@ -25,6 +25,6 @@ class HelpCommand extends BaseSubCommand
 
     protected function prepare(): void
     {
-        $this->setDescription("View commands list");
+        $this->setDescription("Add repository");
     }
 }
