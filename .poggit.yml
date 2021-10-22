@@ -1,0 +1,15 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/MintoD/AdvancedPluginManager
+build-by-default: true
+branches:
+- main
+projects:
+  AdvancedPluginManager:
+    path: ""
+    libs:
+    - src: jojoe77777/FormAPI/libFormAPI
+      version: ^1.3.0
+    - src: CortexPE\Commando
+      version: ^2.1.2
+    - src: MintoD/libMCUnicodeChars/libMCUnicodeChars
+      version: ^1.1.0
+...
