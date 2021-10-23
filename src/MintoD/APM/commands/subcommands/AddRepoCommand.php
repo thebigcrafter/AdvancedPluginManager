@@ -6,17 +6,18 @@ namespace MintoD\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
 use jojoe77777\FormAPI\CustomForm;
+use MintoD\APM\APM;
 use MintoD\APM\forms\RepoForm;
 use MintoD\APM\utils\Notifier;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 
-class AddReposCommand extends BaseSubCommand
+class AddRepoCommand extends BaseSubCommand
 {
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getRepoForm());
+            $sender->sendForm(RepoForm::getAddingForm(APM::getInstance()->repos));
         } else {
             $sender->sendMessage(Notifier::error("Please use this command in-game"));
         }
