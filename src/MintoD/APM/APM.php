@@ -35,9 +35,10 @@ class APM extends PluginBase
     public function onEnable()
     {
         $this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced plugin manager commands"));
+        @mkdir($this->getDataFolder());
         $this->saveDefaultConfig();
         $this->repos = new Config($this->getDataFolder() . "repositories.yml", Config::YAML, array(
-            "repositories" => ["https://example.com"]
+            "repositories" => ["https://thebigcrafter.github.io"]
         ));
         self::$instance = $this;
     }

@@ -8,6 +8,7 @@ use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\Form;
 use jojoe77777\FormAPI\SimpleForm;
 use MintoD\APM\utils\Notifier;
+use MintoD\APM\utils\Reader;
 use pocketmine\Player;
 use pocketmine\utils\Config;
 
@@ -66,7 +67,8 @@ class RepoForm
         });
         $repositoriesList = "";
         foreach ($repos->get("repositories") as $repo) {
-            $repositoriesList = $repositoriesList . "\n" . $repo;
+            $repoInfo = Reader::readRelease($repo);
+            $repositoriesList = $repositoriesList . "Name: " . $repoInfo->label . "\n" . "Codename: " . $repoInfo->codename . "\n" . "Repository URL: " . $repo . "\n\n";
         }
         $form->setTitle("Repositories List | Advanced Plugin Manager");
         $form->setContent($repositoriesList);
