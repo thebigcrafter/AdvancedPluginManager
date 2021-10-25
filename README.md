@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://github.com/MintoD/AdvancedPluginManager">
-    <img src="https://raw.githubusercontent.com/MintoD/AdvancedPluginManager/main/apm.jpg" alt="Logo" width="100" height="100">
+    <img src="https://raw.githubusercontent.com/thebigcrafter/AdvancedPluginManager/main/apm.jpg" alt="Logo" width="100" height="100">
   </a>
     <h3 align="center">AdvancedPluginManager</h3>
   <p align="center">
