@@ -7,26 +7,41 @@ namespace MintoD\APM;
 use MintoD\APM\commands\APMCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\utils\Internet;
+use pocketmine\utils\TextFormat;
 
 class APM extends PluginBase
 {
-
     /**
-     * APM's Prefix
+     * APM's prefix
      * @var string
      */
-    public const PREFIX = "{TOKEN}";
+    public static string $PREFIX = "§a[§bAPM§a]§r ";
     /**
-     * Instance
+     * Repositories cache
+     * @var array
+     */
+    public static array $repoCache = [];
+    /**
+     * Instance of the plugin
      * @var self
      */
-    public static self $instance;
+    private static self $instance;
     /**
-     * Repos file
+     * Repositories
      * @var Config
      */
     public Config $repos;
+    /**
+     * Default repository
+     * @var string
+     */
+    private string $defaultRepo = "https://thebigcrafter.github.io/";
 
+    /**
+     * Get the instance of the plugin
+     * @return self
+     */
     public static function getInstance(): self
     {
         return self::$instance;
@@ -34,12 +49,41 @@ class APM extends PluginBase
 
     public function onEnable()
     {
-        $this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced plugin manager commands"));
+        $this->initConfig();
+        $this->cacheRepo();
+
+        $this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced Plugin Manager"));
+
+        self::$instance = $this;
+    }
+
+    public function initConfig()
+    {
         @mkdir($this->getDataFolder());
         $this->saveDefaultConfig();
-        $this->repos = new Config($this->getDataFolder() . "repositories.yml", Config::YAML, array(
-            "repositories" => ["https://thebigcrafter.github.io"]
-        ));
-        self::$instance = $this;
+        $this->repos = new Config($this->getDataFolder() . "repos.yml", Config::YAML, array("repositories" => [$this->defaultRepo]));
+    }
+
+    public function cacheRepo()
+    {
+        $repositories = $this->repos->get("repositories");
+        foreach ($repositories as $repo) {
+            $this->getLogger()->info(TextFormat::YELLOW . "Caching repository: " . TextFormat::RESET . $repo);
+
+            if (str_ends_with($repo, "/")) {
+                $cache = Internet::getURL($repo . "Release.json");
+            } else {
+                $cache = Internet::getURL($repo . "/Release.json");
+            }
+
+            $json = json_decode($cache);
+
+            self::$repoCache[] = [
+                "repo" => $repo,
+                "label" => $json->label,
+                "suite" => $json->suite,
+                "codename" => $json->codename
+            ];
+        }
     }
 }

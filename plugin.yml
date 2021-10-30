@@ -1,10 +1,11 @@
 name: AdvancedPluginManager
 author: MintoD
+description: A plugin manager for PocketMine-MP
 version: 1.0.0
-api: [ 3.0.0 ]
+api: [3.0.0]
 main: MintoD\APM\APM
 
 permissions:
-  advancedpluginmanager.cmd:
-    description: Allows player to use Advanced Plugin Manager commands
+  apm.cmd:
+    description: Allows player to use the /apm command
     default: op
