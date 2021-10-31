@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace MintoD\APM\forms;
 
 use jojoe77777\FormAPI\SimpleForm;
+use MintoD\APM\APM;
 use pocketmine\form\Form;
 use pocketmine\Player;
+use pocketmine\utils\TextFormat;
 
 class MenuForm
 {
@@ -27,9 +29,14 @@ class MenuForm
                 case 2:
                     $player->sendForm(RepoForm::getListingForm());
                     break;
+                case 3:
+                    $player->sendMessage(APM::$PREFIX . TextFormat::YELLOW . "Updating...");
+                    APM::getInstance()->cacheRepo();
+                    $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Updated!");
+                    break;
             }
         });
-        $buttons = ["Add repository", "Remove repository", "Repositories list"];
+        $buttons = ["Add repository", "Remove repository", "Repositories list", "Update repositories"];
 
         $form->setTitle("Menu Form");
 

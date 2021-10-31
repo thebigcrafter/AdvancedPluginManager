@@ -66,6 +66,8 @@ class APM extends PluginBase
 
     public function cacheRepo()
     {
+        $this->reloadConfig();
+
         $repositories = $this->repos->get("repositories");
         foreach ($repositories as $repo) {
             $this->getLogger()->info(TextFormat::YELLOW . "Caching repository: " . TextFormat::RESET . $repo);
