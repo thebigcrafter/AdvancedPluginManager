@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MintoD\APM\forms;
+namespace thebigcrafter\APM\forms;
 
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\SimpleForm;
-use MintoD\APM\APM;
-use MintoD\APM\jobs\Adder;
-use MintoD\APM\jobs\Remover;
+use thebigcrafter\APM\APM;
+use thebigcrafter\APM\jobs\Adder;
+use thebigcrafter\APM\jobs\Remover;
 use pocketmine\form\Form;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;

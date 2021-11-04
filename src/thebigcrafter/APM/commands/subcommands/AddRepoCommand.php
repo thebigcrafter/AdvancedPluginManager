@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MintoD\APM\commands\subcommands;
+namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
 use CortexPE\Commando\args\RawStringArgument;
 use CortexPE\Commando\exception\ArgumentOrderException;
-use MintoD\APM\APM;
-use MintoD\APM\forms\RepoForm;
-use MintoD\APM\jobs\Adder;
+use thebigcrafter\APM\APM;
+use thebigcrafter\APM\forms\RepoForm;
+use thebigcrafter\APM\jobs\Adder;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;

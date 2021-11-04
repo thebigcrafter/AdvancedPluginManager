@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MintoD\APM\commands;
+namespace thebigcrafter\APM\commands;
 
 use CortexPE\Commando\BaseCommand;
-use MintoD\APM\commands\subcommands\AddRepoCommand;
-use MintoD\APM\commands\subcommands\ListRepoCommand;
-use MintoD\APM\commands\subcommands\RemoveRepoCommand;
-use MintoD\APM\commands\subcommands\UpdateCommand;
-use MintoD\APM\forms\MenuForm;
+use thebigcrafter\APM\commands\subcommands\AddRepoCommand;
+use thebigcrafter\APM\commands\subcommands\ListRepoCommand;
+use thebigcrafter\APM\commands\subcommands\RemoveRepoCommand;
+use thebigcrafter\APM\commands\subcommands\UpdateCommand;
+use thebigcrafter\APM\forms\MenuForm;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 

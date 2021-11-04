@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MintoD\APM\forms;
+namespace thebigcrafter\APM\forms;
 
 use jojoe77777\FormAPI\SimpleForm;
-use MintoD\APM\APM;
+use thebigcrafter\APM\APM;
 use pocketmine\form\Form;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;

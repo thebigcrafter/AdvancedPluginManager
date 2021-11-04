@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MintoD\APM;
+namespace thebigcrafter\APM;
 
-use MintoD\APM\commands\APMCommand;
+use thebigcrafter\APM\commands\APMCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\Internet;
@@ -17,21 +17,31 @@ class APM extends PluginBase
      * @var string
      */
     public static string $PREFIX = "§a[§bAPM§a]§r ";
+
     /**
      * Repositories cache
      * @var array
      */
     public static array $repoCache = [];
+
+    /**
+     * Plugins cache
+     * @return array
+     */
+    public static array $pluginCache = [];
+
     /**
      * Instance of the plugin
      * @var self
      */
     private static self $instance;
+
     /**
      * Repositories
      * @var Config
      */
     public Config $repos;
+
     /**
      * Default repository
      * @var string
@@ -86,6 +96,23 @@ class APM extends PluginBase
                 "suite" => $json->suite,
                 "codename" => $json->codename
             ];
+        }
+
+        $this->cachePlugin();
+    }
+
+    public function cachePlugin()
+    {
+        foreach ($this->repos->get("repositories") as $repo) {
+            if (str_ends_with($repo, "/")) {
+                $cache = Internet::getURL($repo . "Plugins.json");
+            } else {
+                $cache = Internet::getURL($repo . "/Plugins.json");
+            }
+
+            $json = json_decode($cache);
+
+            self::$repoCache[] = [$json];
         }
     }
 }

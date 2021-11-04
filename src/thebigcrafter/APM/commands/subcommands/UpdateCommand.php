@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace MintoD\APM\commands\subcommands;
+namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
-use MintoD\APM\APM;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
+use thebigcrafter\APM\APM;
 
 class UpdateCommand extends BaseSubCommand {
     protected function prepare(): void

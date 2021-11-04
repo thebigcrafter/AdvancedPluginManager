@@ -1,0 +1,20 @@
+{
+    "name": "thebigcrafter/advancedpluginmanager",
+    "description": "A plugin manager for PocketMine servers",
+    "type": "project",
+    "require": {
+        "pocketmine/pocketmine-mp": "^3.25"
+    },
+    "license": "GPL-3.0-only",
+    "autoload": {
+        "psr-4": {
+            "Thebigcrafter\\Advancedpluginmanager\\": "src/thebigcrafter/APM/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MintoD",
+            "email": "tobythedev7@outlook.com"
+        }
+    ]
+}

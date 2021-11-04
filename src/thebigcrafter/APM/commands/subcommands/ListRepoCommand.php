@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MintoD\APM\commands\subcommands;
+namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
-use MintoD\APM\APM;
-use MintoD\APM\forms\RepoForm;
+use thebigcrafter\APM\APM;
+use thebigcrafter\APM\forms\RepoForm;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace MintoD\APM\jobs;
+namespace thebigcrafter\APM\jobs;
 
-use MintoD\APM\APM;
+use thebigcrafter\APM\APM;
 
 class Adder
 {
