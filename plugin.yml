@@ -3,7 +3,7 @@ author: thebigcrafter
 description: A plugin manager for PocketMine-MP
 version: 1.0.0
 api: [3.0.0]
-main: MintoD\thebigcrafter\APM
+main: thebigcrafter\APM\APM
 
 permissions:
   apm.cmd:
