@@ -14,7 +14,8 @@ use pocketmine\command\CommandSender;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 
-class AddRepoCommand extends BaseSubCommand {
+class AddRepoCommand extends BaseSubCommand
+{
     /**
      * @throws ArgumentOrderException
      */
@@ -27,13 +28,13 @@ class AddRepoCommand extends BaseSubCommand {
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
-        if($sender instanceof Player) {
+        if ($sender instanceof Player) {
             $sender->sendForm(RepoForm::getAddingForm());
         } else {
-            if(!isset($args["url"])) {
+            if (!isset($args["url"])) {
                 return;
             }
-            if(Adder::addRepo($args["url"])) {
+            if (Adder::addRepo($args["url"])) {
                 $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Added!");
             } else {
                 $sender->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $args["url"] . " is not a valid URL!");

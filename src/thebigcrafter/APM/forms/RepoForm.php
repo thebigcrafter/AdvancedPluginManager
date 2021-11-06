@@ -12,6 +12,7 @@ use thebigcrafter\APM\jobs\Remover;
 use pocketmine\form\Form;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
+use thebigcrafter\APM\jobs\Installer;
 
 class RepoForm
 {
@@ -69,6 +70,20 @@ class RepoForm
         }
         $form->setTitle("Repositories list");
         $form->setContent($repositoriesList);
+        return $form;
+    }
+
+    public static function getInstallForm(): Form
+    {
+        $form = new CustomForm(function (Player $player, array $data = null) {
+            if (Installer::install($data[0])) {
+                $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Installed!");
+            } else {
+                $player->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $data[0] . " not found!");
+            }
+        });
+        $form->setTitle("Install plugin");
+        $form->addInput("Please enter plugin name");
         return $form;
     }
 }

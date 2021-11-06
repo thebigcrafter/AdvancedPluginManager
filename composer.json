@@ -3,7 +3,9 @@
     "description": "A plugin manager for PocketMine servers",
     "type": "project",
     "require": {
-        "pocketmine/pocketmine-mp": "^3.25"
+        "pocketmine/pocketmine-mp": "^3.25",
+        "cortexpe/commando": "@dev",
+        "jojoe77777/formapi"
     },
     "license": "GPL-3.0-only",
     "autoload": {
@@ -15,6 +17,16 @@
         {
             "name": "MintoD",
             "email": "tobythedev7@outlook.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./lib/Commando-master/"
+        },
+        {
+            "type": "path",
+            "url": "./lib/FormAPI-master/"
         }
     ]
 }
