@@ -110,11 +110,11 @@ class APM extends PluginBase
                 $cache = Internet::getURL($repo . "/Plugins.json");
             }
 
-            $plugins = json_decode($cache, TRUE);
+            $plugins = json_decode($cache, true);
 
             self::$repoCache[] = [$cache];
 
-            foreach($plugins as $plugin) {
+            foreach ($plugins as $plugin) {
                 self::$pluginCache[] = [
                     "plugins" => $plugin["plugin"],
                     "name" => $plugin["name"],

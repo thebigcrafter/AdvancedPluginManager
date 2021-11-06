@@ -9,12 +9,11 @@ use thebigcrafter\APM\APM;
 
 class Installer
 {
-
     /**
      * Install the plugin. Returns true if plugin is found, false otherwise.
-     * 
+     *
      * @param string $pluginName
-     * 
+     *
      * @return bool
      */
     public static function install(string $pluginName): bool
@@ -57,10 +56,10 @@ class Installer
 
     /**
      * Download the plugin. Returns true if plugin is downloaded, false if the URL is invalid
-     * 
+     *
      * @param string $fileURL
      * @param string $path
-     * 
+     *
      * @return bool
      */
     public static function downloadPlugin(string $fileURL, string $path, array $hash): bool
@@ -70,7 +69,7 @@ class Installer
         $filePath = $path . $fileName;
 
         if (file_put_contents($filePath, $file)) {
-            if(md5_file($filePath) === $hash["md5"] && sha1_file($filePath) === $hash["sha1"] && hash_file("sha256", $filePath) === $hash["sha256"] && hash_file("sha512", $filePath) === $hash["sha512"]) {
+            if (md5_file($filePath) === $hash["md5"] && sha1_file($filePath) === $hash["sha1"] && hash_file("sha256", $filePath) === $hash["sha256"] && hash_file("sha512", $filePath) === $hash["sha512"]) {
                 return true;
             } else {
                 unlink($filePath);

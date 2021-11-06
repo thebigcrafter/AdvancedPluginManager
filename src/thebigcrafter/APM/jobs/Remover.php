@@ -15,14 +15,13 @@ class Remover
     {
         $repositories = APM::getInstance()->repos;
         $repositoriesList = $repositories->get("repositories");
-            if(in_array($url, $repositoriesList)) {
-                unset($repositoriesList[array_search($url, $repositoriesList)]);
-                $repositories->set("repositories", $repositoriesList);
-                $repositories->save();
-                return true;
-            } else {
-                return false;
-            }
-
+        if (in_array($url, $repositoriesList)) {
+            unset($repositoriesList[array_search($url, $repositoriesList)]);
+            $repositories->set("repositories", $repositoriesList);
+            $repositories->save();
+            return true;
+        } else {
+            return false;
+        }
     }
 }

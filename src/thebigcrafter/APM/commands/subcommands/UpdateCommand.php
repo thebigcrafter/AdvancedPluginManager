@@ -9,7 +9,8 @@ use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 
-class UpdateCommand extends BaseSubCommand {
+class UpdateCommand extends BaseSubCommand
+{
     protected function prepare(): void
     {
         $this->setDescription("Update repositories");
@@ -17,8 +18,8 @@ class UpdateCommand extends BaseSubCommand {
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
-            $sender->sendMessage(APM::$PREFIX . TextFormat::YELLOW . "Updating...");
-            APM::getInstance()->cacheRepo();
-            $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Updated!");
+        $sender->sendMessage(APM::$PREFIX . TextFormat::YELLOW . "Updating...");
+        APM::getInstance()->cacheRepo();
+        $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Updated!");
     }
 }

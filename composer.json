@@ -7,11 +7,17 @@
         "cortexpe/commando": "@dev",
         "jojoe77777/formapi": "@dev"
     },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.2"
+    },
     "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
             "Thebigcrafter\\Advancedpluginmanager\\": "src/thebigcrafter/APM/"
         }
+    },
+    "scripts": {
+        "php-cs-fixer": "./vendor/bin/php-cs-fixer"
     },
     "authors": [
         {

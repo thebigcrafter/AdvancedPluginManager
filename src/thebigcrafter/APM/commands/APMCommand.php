@@ -14,7 +14,8 @@ use thebigcrafter\APM\forms\MenuForm;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 
-class APMCommand extends BaseCommand {
+class APMCommand extends BaseCommand
+{
     protected function prepare(): void
     {
         $this->setDescription("APM commands");
@@ -29,7 +30,7 @@ class APMCommand extends BaseCommand {
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
-        if($sender instanceof Player) {
+        if ($sender instanceof Player) {
             $sender->sendForm(MenuForm::getMenuForm());
         } else {
             $this->sendUsage();
