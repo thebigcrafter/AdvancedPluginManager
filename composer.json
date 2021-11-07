@@ -27,12 +27,12 @@
     ],
     "repositories": [
         {
-            "type": "path",
-            "url": "./lib/Commando-master/"
+            "type": "vcs",
+            "url": "https://github.com/jojoe77777/FormAPI.git"
         },
         {
-            "type": "path",
-            "url": "./lib/FormAPI-master/"
+            "type": "vcs",
+            "url": "https://github.com/CortexPE/Commando.git"
         }
     ]
 }
