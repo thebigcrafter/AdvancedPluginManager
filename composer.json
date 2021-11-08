@@ -4,8 +4,8 @@
     "type": "project",
     "require": {
         "pocketmine/pocketmine-mp": "^3.25",
-        "cortexpe/commando": "@dev",
-        "jojoe77777/formapi": "@dev"
+        "cortexpe/commando": "dev-master",
+        "jojoe77777/libformapi": "@dev"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.2"
@@ -27,12 +27,8 @@
     ],
     "repositories": [
         {
-            "type": "path",
-            "url": "./lib/Commando-master/"
-        },
-        {
-            "type": "path",
-            "url": "./lib/FormAPI-master/"
+            "type": "vcs",
+            "url": "https://github.com/PocketMine-MP-VN-Group/FormAPI"
         }
     ]
 }
