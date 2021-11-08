@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ceb8bc080a2ea244e854b8054db3bc81",
+    "content-hash": "f8b69d772e58b337d2696974152bbe5b",
     "packages": [
         {
             "name": "adhocore/json-comment",
@@ -63,12 +63,19 @@
         },
         {
             "name": "cortexpe/commando",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "./lib/Commando-master",
-                "reference": "fec1263f3493625c4a3b7dd1694d4510a5d28de5"
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CortexPE/Commando.git",
+                "reference": "6b3b6e15fdbd3cdef44b52cbd56023b76dddac60"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CortexPE/Commando/zipball/6b3b6e15fdbd3cdef44b52cbd56023b76dddac60",
+                "reference": "6b3b6e15fdbd3cdef44b52cbd56023b76dddac60",
+                "shasum": ""
+            },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -77,37 +84,46 @@
                     ]
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0-only"
             ],
             "description": "A Command Framework virion for PocketMine-MP ",
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/CortexPE/Commando/issues",
+                "source": "https://github.com/CortexPE/Commando/tree/master"
+            },
+            "time": "2021-09-06T09:14:24+00:00"
         },
         {
-            "name": "jojoe77777/formapi",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "./lib/FormAPI-master",
-                "reference": "a114d7014c0d90334e37a05a8ca029b2f919d89e"
+            "name": "jojoe77777/libformapi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PocketMine-MP-VN-Group/FormAPI.git",
+                "reference": "c8ff2d1b9116d8ec160dfe2962ab294bbd271857"
             },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PocketMine-MP-VN-Group/FormAPI/zipball/c8ff2d1b9116d8ec160dfe2962ab294bbd271857",
+                "reference": "c8ff2d1b9116d8ec160dfe2962ab294bbd271857",
+                "shasum": ""
+            },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "jojoe77777\\formapi\\": [
-                        "src\\jojoe77777\\FormAPI\\"
-                    ]
+                    "jojoe77777\\FormAPI\\": "src/jojoe77777/FormAPI"
                 }
             },
             "license": [
-                "LGPL-3.0-only"
+                "LGPL-3.0"
             ],
-            "description": "A Command Framework virion for PocketMine-MP ",
-            "transport-options": {
-                "relative": true
-            }
+            "description": "Simple API for creating forms for MCPE clients (PocketMine only)",
+            "support": {
+                "source": "https://github.com/PocketMine-MP-VN-Group/FormAPI/tree/master"
+            },
+            "time": "2021-11-07T10:56:21+00:00"
         },
         {
             "name": "pocketmine/binaryutils",
@@ -2717,7 +2733,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "cortexpe/commando": 20,
-        "jojoe77777/formapi": 20
+        "jojoe77777/libformapi": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
