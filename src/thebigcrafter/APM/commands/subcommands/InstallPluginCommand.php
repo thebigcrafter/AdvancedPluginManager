@@ -26,7 +26,7 @@ class InstallPluginCommand extends BaseSubCommand
         if ($sender instanceof Player) {
             $sender->sendForm(RepoForm::getInstallForm());
         } else {
-            if (Installer::install($args["plugin name"])) {
+            if (Installer::install((string) $args["plugin name"])) {
                 $sender->sendMessage(APM::$PREFIX . "§aPlugin installed successfully");
             } else {
                 $sender->sendMessage(APM::$PREFIX . "§4Plugin not found!");

@@ -23,7 +23,7 @@ class RemoveRepoCommand extends BaseSubCommand
             if (!isset($args["url"])) {
                 return;
             }
-            if (Remover::removeRepo($args["url"])) {
+            if (Remover::removeRepo((string) $args["url"])) {
                 $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
             } else {
                 $sender->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $args["url"] . " not found!");

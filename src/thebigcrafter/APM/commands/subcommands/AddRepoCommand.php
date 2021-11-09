@@ -34,7 +34,7 @@ class AddRepoCommand extends BaseSubCommand
             if (!isset($args["url"])) {
                 return;
             }
-            if (Adder::addRepo($args["url"])) {
+            if (Adder::addRepo((string) $args["url"])) {
                 $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Added!");
             } else {
                 $sender->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $args["url"] . " is not a valid URL!");

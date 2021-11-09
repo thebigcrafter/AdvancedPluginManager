@@ -24,4 +24,19 @@ class Remover
             return false;
         }
     }
+
+    /**
+     * Remove plugin. If removed, return true else if cannot find plugin return false
+     *
+     * @return bool
+     */
+    public static function removePlugin(string $name): bool
+    {
+        if (file_exists(APM::getInstance()->getServer()->getDataPath() . "plugins/" . $name . ".phar")) {
+            unlink(APM::getInstance()->getServer()->getDataPath() . "plugins/" . $name . ".phar");
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

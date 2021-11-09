@@ -13,6 +13,7 @@ use thebigcrafter\APM\commands\subcommands\InstallPluginCommand;
 use thebigcrafter\APM\forms\MenuForm;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
+use thebigcrafter\APM\commands\subcommands\RemovePluginCommand;
 
 class APMCommand extends BaseCommand
 {
@@ -26,6 +27,7 @@ class APMCommand extends BaseCommand
         $this->registerSubCommand(new ListRepoCommand($this->getPlugin(), "list-repo", "List repositories"));
         $this->registerSubCommand(new UpdateCommand($this->getPlugin(), "update", "Update repositories"));
         $this->registerSubCommand(new InstallPluginCommand($this->getPlugin(), "install", "Install plugin"));
+        $this->registerSubCommand(new RemovePluginCommand($this->getPlugin(), "remove", "Remove plugin"));
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void

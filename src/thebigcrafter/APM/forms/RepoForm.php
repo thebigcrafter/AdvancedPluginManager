@@ -73,6 +73,10 @@ class RepoForm
         return $form;
     }
 
+    /**
+     * Get install plugin form
+     * @return Form
+     */
     public static function getInstallForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
@@ -83,6 +87,25 @@ class RepoForm
             }
         });
         $form->setTitle("Install plugin");
+        $form->addInput("Please enter plugin name");
+        return $form;
+    }
+
+    /**
+     * Get removing plugin form
+     * @return Form
+     */
+
+    public static function getRemoveForm(): Form
+    {
+        $form = new CustomForm(function (Player $player, array $data = null) {
+            if (Remover::removePlugin($data[0])) {
+                $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
+            } else {
+                $player->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $data[0] . " not found!");
+            }
+        });
+        $form->setTitle("Remove plugin");
         $form->addInput("Please enter plugin name");
         return $form;
     }
