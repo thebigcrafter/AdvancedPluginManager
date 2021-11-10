@@ -13,7 +13,6 @@ class UpdateCommand extends BaseSubCommand
 {
     protected function prepare(): void
     {
-        $this->setDescription("Update repositories");
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void

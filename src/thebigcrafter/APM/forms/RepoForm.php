@@ -12,6 +12,7 @@ use thebigcrafter\APM\jobs\Remover;
 use pocketmine\form\Form;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
+use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\jobs\Installer;
 
 class RepoForm
@@ -26,7 +27,7 @@ class RepoForm
             if (Adder::addRepo($data[0])) {
                 $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Added!");
             } else {
-                $player->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $data[0] . " is not a valid URL!");
+                ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$INVALID_URL);
             }
         });
         $form->setTitle("Add repository");
@@ -35,16 +36,16 @@ class RepoForm
     }
 
     /**
-     * Get removing form
+     * Get remove repo form
      * @return Form
      */
-    public static function getRemovingForm(): Form
+    public static function getRemoveRepoForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
             if (Remover::removeRepo($data[0])) {
                 $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
             } else {
-                $player->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $data[0] . " not found!");
+                ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$INVALID_URL);
             }
         });
         $form->setTitle("Remove repository");
@@ -53,10 +54,10 @@ class RepoForm
     }
 
     /**
-     * Get listing form
+     * Get repositories list form
      * @return Form
      */
-    public static function getListingForm(): Form
+    public static function getRepoListForm(): Form
     {
         $form = new SimpleForm(function (Player $player, int $data = null) {
         });
@@ -77,13 +78,13 @@ class RepoForm
      * Get install plugin form
      * @return Form
      */
-    public static function getInstallForm(): Form
+    public static function getInstallPluginForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
             if (Installer::install($data[0])) {
                 $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Installed!");
             } else {
-                $player->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $data[0] . " not found!");
+                ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
             }
         });
         $form->setTitle("Install plugin");
@@ -92,17 +93,17 @@ class RepoForm
     }
 
     /**
-     * Get removing plugin form
+     * Get remove plugin form
      * @return Form
      */
 
-    public static function getRemoveForm(): Form
+    public static function getRemovePluginForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
             if (Remover::removePlugin($data[0])) {
                 $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
             } else {
-                $player->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $data[0] . " not found!");
+                ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
             }
         });
         $form->setTitle("Remove plugin");

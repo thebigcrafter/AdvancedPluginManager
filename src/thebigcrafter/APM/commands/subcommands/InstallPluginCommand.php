@@ -11,25 +11,24 @@ use pocketmine\Player;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Installer;
 use thebigcrafter\APM\APM;
+use thebigcrafter\APM\error\ErrorHandler;
 
 class InstallPluginCommand extends BaseSubCommand
 {
     protected function prepare(): void
     {
-        $this->setDescription("Install a plugin");
-
         $this->registerArgument(0, new RawStringArgument("plugin name"), "The plugin to install", false);
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getInstallForm());
+            $sender->sendForm(RepoForm::getInstallPluginForm());
         } else {
             if (Installer::install((string) $args["plugin name"])) {
                 $sender->sendMessage(APM::$PREFIX . "§aPlugin installed successfully");
             } else {
-                $sender->sendMessage(APM::$PREFIX . "§4Plugin not found!");
+                ErrorHandler::sendErrorToConsole(ErrorHandler::$PLUGIN_NOT_FOUND);
             }
         }
     }

@@ -22,12 +22,12 @@ class APMCommand extends BaseCommand
         $this->setDescription("APM commands");
         $this->setPermission("apm.cmd");
 
-        $this->registerSubCommand(new AddRepoCommand($this->getPlugin(), "add-repo", "Add repository"));
-        $this->registerSubCommand(new RemoveRepoCommand($this->getPlugin(), "remove-repo", "Remove repository"));
-        $this->registerSubCommand(new ListRepoCommand($this->getPlugin(), "list-repo", "List repositories"));
-        $this->registerSubCommand(new UpdateCommand($this->getPlugin(), "update", "Update repositories"));
-        $this->registerSubCommand(new InstallPluginCommand($this->getPlugin(), "install", "Install plugin"));
-        $this->registerSubCommand(new RemovePluginCommand($this->getPlugin(), "remove", "Remove plugin"));
+        $this->registerSubCommand(new AddRepoCommand("add-repo", "Add repository"));
+        $this->registerSubCommand(new RemoveRepoCommand("remove-repo", "Remove repository"));
+        $this->registerSubCommand(new ListRepoCommand("list-repo", "List repositories"));
+        $this->registerSubCommand(new UpdateCommand("update", "Update repositories"));
+        $this->registerSubCommand(new InstallPluginCommand("install", "Install plugin"));
+        $this->registerSubCommand(new RemovePluginCommand("remove", "Remove plugin"));
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void

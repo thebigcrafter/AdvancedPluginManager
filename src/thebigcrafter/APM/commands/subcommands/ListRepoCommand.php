@@ -15,7 +15,7 @@ class ListRepoCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getListingForm());
+            $sender->sendForm(RepoForm::getRepoListForm());
         } else {
             $repositoriesList = "";
             foreach (APM::getInstance()->repos->get("repositories") as $repo) {
@@ -27,6 +27,5 @@ class ListRepoCommand extends BaseSubCommand
 
     protected function prepare(): void
     {
-        $this->setDescription("List repositories");
     }
 }

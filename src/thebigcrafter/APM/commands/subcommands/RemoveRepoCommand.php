@@ -12,29 +12,28 @@ use thebigcrafter\APM\jobs\Remover;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
+use thebigcrafter\APM\error\ErrorHandler;
 
 class RemoveRepoCommand extends BaseSubCommand
 {
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getRemovingForm());
+            $sender->sendForm(RepoForm::getRemoveRepoForm());
         } else {
             if (!isset($args["url"])) {
-                return;
+                ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);
             }
             if (Remover::removeRepo((string) $args["url"])) {
                 $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
             } else {
-                $sender->sendMessage(APM::$PREFIX . TextFormat::DARK_RED . $args["url"] . " not found!");
+                ErrorHandler::sendErrorToConsole(ErrorHandler::$URL_NOT_FOUND);
             }
         }
     }
 
     protected function prepare(): void
     {
-        $this->setDescription("Remove repository");
-
         $this->registerArgument(0, new RawStringArgument("url", false));
     }
 }
