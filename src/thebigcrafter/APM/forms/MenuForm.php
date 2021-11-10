@@ -24,19 +24,25 @@ class MenuForm
                     $player->sendForm(RepoForm::getAddingForm());
                     break;
                 case 1:
-                    $player->sendForm(RepoForm::getRemovingForm());
+                    $player->sendForm(RepoForm::getRemoveRepoForm());
                     break;
                 case 2:
-                    $player->sendForm(RepoForm::getListingForm());
+                    $player->sendForm(RepoForm::getRepoListForm());
                     break;
                 case 3:
                     $player->sendMessage(APM::$PREFIX . TextFormat::YELLOW . "Updating...");
                     APM::getInstance()->cacheRepo();
                     $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Updated!");
                     break;
+                case 4:
+                    $player->sendForm(RepoForm::getInstallPluginForm());
+                    break;
+                case 5:
+                    $player->sendForm(RepoForm::getRemovePluginForm());
+                    break;
             }
         });
-        $buttons = ["Add repository", "Remove repository", "Repositories list", "Update repositories"];
+        $buttons = ["Add repository", "Remove repository", "Repositories list", "Update repositories", "Install plugin", "Remove plugin"];
 
         $form->setTitle("Menu Form");
 
