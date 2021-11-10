@@ -8,10 +8,12 @@ use thebigcrafter\APM\commands\APMCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\Internet;
+use pocketmine\utils\SingletonTrait;
 use pocketmine\utils\TextFormat;
 
 class APM extends PluginBase
 {
+    use SingletonTrait;
     /**
      * APM's prefix
      * @var string
@@ -31,12 +33,6 @@ class APM extends PluginBase
     public static array $pluginCache = [];
 
     /**
-     * Instance of the plugin
-     * @var self
-     */
-    private static self $instance;
-
-    /**
      * Repositories
      * @var Config
      */
@@ -48,15 +44,6 @@ class APM extends PluginBase
      */
     private string $defaultRepo = "https://thebigcrafter.github.io/";
 
-    /**
-     * Get the instance of the plugin
-     * @return self
-     */
-    public static function getInstance(): self
-    {
-        return self::$instance;
-    }
-
     public function onEnable()
     {
         $this->initConfig();
@@ -64,7 +51,7 @@ class APM extends PluginBase
 
         $this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced Plugin Manager"));
 
-        self::$instance = $this;
+        self::setInstance($this);
     }
 
     public function initConfig()
