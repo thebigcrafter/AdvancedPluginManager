@@ -14,6 +14,7 @@ use pocketmine\utils\TextFormat;
 class APM extends PluginBase
 {
     use SingletonTrait;
+
     /**
      * APM's prefix
      * @var string
@@ -43,6 +44,15 @@ class APM extends PluginBase
      * @var string
      */
     private string $defaultRepo = "https://thebigcrafter.github.io/";
+
+    /**
+     * Get instance
+     * @return self
+     */
+    public static function getInstance(): self
+    {
+        return self::$instance;
+    }
 
     public function onEnable()
     {

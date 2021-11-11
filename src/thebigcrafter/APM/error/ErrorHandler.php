@@ -33,7 +33,7 @@ class ErrorHandler
      *
      * @param Player $player
      * @param int $errorCode
-     * 
+     *
      * @return void
      */
     public static function sendErrorToPlayer(Player $player, int $errorCode): void
@@ -43,9 +43,9 @@ class ErrorHandler
 
     /**
      * Send an error message to console
-     * 
+     *
      * @param int $errorCode
-     * 
+     *
      * @return void
      */
     public static function sendErrorToConsole(int $errorCode): void
