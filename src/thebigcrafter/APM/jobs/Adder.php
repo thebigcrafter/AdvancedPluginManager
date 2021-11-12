@@ -3,6 +3,7 @@
 namespace thebigcrafter\APM\jobs;
 
 use thebigcrafter\APM\APM;
+use thebigcrafter\APM\utils\Utils;
 
 class Adder
 {
@@ -14,6 +15,14 @@ class Adder
     public static function addRepo(string $url): bool
     {
         if (filter_var($url, FILTER_VALIDATE_URL)) {
+            if (!str_ends_with($url, "/")) {
+                $url .= "/";
+            }
+
+            if(!Utils::isAPMRepo($url)) {
+                return false;
+            }
+            
             $reposFile = APM::getInstance()->repos;
             $repos = $reposFile->get("repositories");
             $repos[] = $url;
