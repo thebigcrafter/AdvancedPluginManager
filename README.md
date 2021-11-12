@@ -1,5 +1,3 @@
-# THIS PLUGIN IS DEVELOPING
-
 <div align="center">
   <a href="https://github.com/thebigcrafter/AdvancedPluginManager">
     <img src="https://raw.githubusercontent.com/thebigcrafter/AdvancedPluginManager/main/apm.jpg" alt="Logo" width="100" height="100">
