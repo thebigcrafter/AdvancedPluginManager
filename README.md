@@ -1,16 +1,15 @@
-<div align="center">
-  <a href="https://github.com/thebigcrafter/AdvancedPluginManager">
-    <img src="https://raw.githubusercontent.com/thebigcrafter/AdvancedPluginManager/main/apm.jpg" alt="Logo" width="100" height="100">
-  </a>
-    <h3 align="center">AdvancedPluginManager</h3>
-  <p align="center">
-    An advanced plugin manager for PocketMine.
-    <br />
-    <a href="https://github.com/thebigcrafter/AdvancedPluginManager/releases">Releases</a>
-    ·
-    <a href="https://github.com/thebigcrafter/AdvancedPluginManager/issues">Report Bug</a>
-  </p>
-</div>
+[![PoggitCI](https://poggit.pmmp.io/ci.shield/thebigcrafter/AdvancedPluginManager/~)](https://github.com/thebigcrafter/AdvancedPluginManager)
+[![License](https://img.shields.io/github/license/thebigcrafter/AdvancedPluginManager)](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE)
+
+# AdvancedPluginManager
+
+AdvancedPluginManager (APM) is an open-source, powerful plugin manager for PocketMine servers and developed by [thebigcrafter](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE).
+
+# Installation
+
+1. Download the latest version from [here.](https://github.com/thebigcrafter/AdvancedPluginManager/releases)
+2. Move it to `plugins` folder.
+3. Restart your server.
 
 # License
 

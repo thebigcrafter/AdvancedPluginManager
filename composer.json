@@ -3,6 +3,7 @@
     "description": "A plugin manager for PocketMine servers",
     "type": "project",
     "require": {
+        "php": "^8.0",
         "pocketmine/pocketmine-mp": "^3.25",
         "cortexpe/commando": "dev-master",
         "jojoe77777/libformapi": "@dev"
