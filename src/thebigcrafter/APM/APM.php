@@ -29,9 +29,16 @@ class APM extends PluginBase
 
     /**
      * Plugins cache
-     * @return array
+     * @var array
      */
     public static array $pluginCache = [];
+
+    /**
+     * Loaded plugins
+     *
+     * @var array
+     */
+    public static array $loadedPlugins = [];
 
     /**
      * Repositories
@@ -58,6 +65,7 @@ class APM extends PluginBase
     {
         $this->initConfig();
         $this->cacheRepo();
+        $this->cacheLoadedPlugin();
 
         $this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced Plugin Manager"));
 
@@ -123,6 +131,22 @@ class APM extends PluginBase
                     "sha256" => $plugin["sha256"],
                     "sha512" => $plugin["sha512"]
                 ];
+            }
+        }
+    }
+
+    /**
+     * 
+     */
+    public function cacheLoadedPlugin()
+    {
+        foreach ($this->getServer()->getPluginManager()->getPlugins() as $plugin) {
+            $files = array_diff(scandir($this->getServer()->getDataPath() . "plugins/"), array(".", ".."));
+
+            foreach ($files as $file) {
+                if (strpos($file, $plugin->getName()) !== false && str_ends_with($file, ".phar") === true) {
+                    self::$loadedPlugins[] = ["name" => $plugin->getName(), "path" => $this->getServer()->getDataPath() . "plugins/" . $file];
+                }
             }
         }
     }

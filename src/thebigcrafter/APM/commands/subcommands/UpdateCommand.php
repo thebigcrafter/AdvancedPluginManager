@@ -8,6 +8,7 @@ use CortexPE\Commando\BaseSubCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
+use thebigcrafter\APM\jobs\Updater;
 
 class UpdateCommand extends BaseSubCommand
 {
@@ -18,7 +19,7 @@ class UpdateCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         $sender->sendMessage(APM::$PREFIX . TextFormat::YELLOW . "Updating...");
-        APM::getInstance()->cacheRepo();
+        Updater::updateRepo();
         $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Updated!");
     }
 }

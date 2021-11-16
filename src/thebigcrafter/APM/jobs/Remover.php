@@ -28,15 +28,23 @@ class Remover
     /**
      * Remove plugin. If removed, return true else if cannot find plugin return false
      *
+     * @param string $name
+     * 
      * @return bool
      */
     public static function removePlugin(string $name): bool
     {
-        if (file_exists(APM::getInstance()->getServer()->getDataPath() . "plugins/" . $name . ".phar")) {
-            unlink(APM::getInstance()->getServer()->getDataPath() . "plugins/" . $name . ".phar");
-            return true;
-        } else {
-            return false;
+        /**
+         * @var bool
+         */
+        $result = false;
+
+        foreach(APM::$loadedPlugins as $plugin) {
+            if($name == $plugin["name"]) {
+                unlink($plugin["path"]);
+                $result = true;
+            }
         }
+        return $result;
     }
 }
