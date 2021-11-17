@@ -136,7 +136,7 @@ class APM extends PluginBase
     }
 
     /**
-     * 
+     *
      */
     public function cacheLoadedPlugin()
     {

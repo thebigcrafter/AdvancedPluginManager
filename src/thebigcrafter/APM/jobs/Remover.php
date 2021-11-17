@@ -29,7 +29,7 @@ class Remover
      * Remove plugin. If removed, return true else if cannot find plugin return false
      *
      * @param string $name
-     * 
+     *
      * @return bool
      */
     public static function removePlugin(string $name): bool
@@ -39,8 +39,8 @@ class Remover
          */
         $result = false;
 
-        foreach(APM::$loadedPlugins as $plugin) {
-            if($name == $plugin["name"]) {
+        foreach (APM::$loadedPlugins as $plugin) {
+            if ($name == $plugin["name"]) {
                 unlink($plugin["path"]);
                 $result = true;
             }

@@ -9,7 +9,8 @@
         "jojoe77777/libformapi": "@dev"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.2"
+        "friendsofphp/php-cs-fixer": "^3.2",
+        "phpstan/phpstan": "^1.1"
     },
     "license": "GPL-3.0-only",
     "autoload": {
@@ -18,7 +19,8 @@
         }
     },
     "scripts": {
-        "php-cs-fixer": "./vendor/bin/php-cs-fixer"
+        "fix-src": "./vendor/bin/php-cs-fixer fix src/",
+        "analyse-src": "./vendor/bin/phpstan analyse -l 8 src/"
     },
     "authors": [
         {

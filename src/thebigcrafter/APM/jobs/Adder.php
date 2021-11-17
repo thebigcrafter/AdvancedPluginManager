@@ -19,10 +19,10 @@ class Adder
                 $url .= "/";
             }
 
-            if(!Utils::isAPMRepo($url)) {
+            if (!Utils::isAPMRepo($url)) {
                 return false;
             }
-            
+
             $reposFile = APM::getInstance()->repos;
             $repos = $reposFile->get("repositories");
             $repos[] = $url;
