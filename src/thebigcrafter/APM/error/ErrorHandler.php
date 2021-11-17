@@ -2,6 +2,7 @@
 
 namespace thebigcrafter\APM\error;
 
+use Error;
 use pocketmine\Player;
 use pocketmine\utils\MainLogger;
 use pocketmine\utils\TextFormat;

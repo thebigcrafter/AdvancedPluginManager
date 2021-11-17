@@ -23,6 +23,7 @@ class Installer
         $latestVersion = "";
         $pluginURL = "";
         $hash = [];
+        $installed = false;
 
 
         foreach (APM::$pluginCache as $plugin) {
@@ -44,14 +45,11 @@ class Installer
                 $hash = ["md5" => $plugin["md5"], "sha1" => $plugin["sha1"], "sha256" => $plugin["sha256"], "sha512" => $plugin["sha512"]];
             }
         }
-
-        if (empty($plugins)) {
-            return false;
-        } else {
-            if (self::downloadPlugin($pluginURL, APM::getInstance()->getServer()->getDataPath() . "plugins/", $hash)) {
-                return true;
-            }
+        if (!empty($plugins) && self::downloadPlugin($pluginURL, APM::getInstance()->getServer()->getDataPath() . "plugins/", $hash)) {
+            $installed = true;
         }
+
+        return $installed;
     }
 
     /**
@@ -75,7 +73,6 @@ class Installer
                 unlink($filePath);
                 return false;
             }
-            return true;
         } else {
             return false;
         }

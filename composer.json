@@ -20,7 +20,7 @@
     },
     "scripts": {
         "fix-src": "./vendor/bin/php-cs-fixer fix src/",
-        "analyse-src": "./vendor/bin/phpstan analyse -l 8 src/"
+        "analyse-src": "./vendor/bin/phpstan analyse -c phpstan.neon"
     },
     "authors": [
         {

@@ -17,26 +17,29 @@ class APM extends PluginBase
 
     /**
      * APM's prefix
+     * 
      * @var string
      */
     public static string $PREFIX = "§a[§bAPM§a]§r ";
 
     /**
      * Repositories cache
-     * @var array
+     * 
+     * @var array<mixed>
      */
     public static array $repoCache = [];
 
     /**
      * Plugins cache
-     * @var array
+     * 
+     * @var array<mixed>
      */
     public static array $pluginCache = [];
 
     /**
      * Loaded plugins
      *
-     * @var array
+     * @var array<mixed>
      */
     public static array $loadedPlugins = [];
 
