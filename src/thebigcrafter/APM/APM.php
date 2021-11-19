@@ -64,7 +64,7 @@ class APM extends PluginBase
         return self::$instance;
     }
 
-    public function onEnable()
+    public function onEnable(): void
     {
         $this->initConfig();
         $this->cacheRepo();
@@ -75,14 +75,24 @@ class APM extends PluginBase
         self::setInstance($this);
     }
 
-    public function initConfig()
+    /**
+     * Initialize config
+     *
+     * @return void
+     */
+    public function initConfig(): void
     {
         @mkdir($this->getDataFolder());
         $this->saveDefaultConfig();
         $this->repos = new Config($this->getDataFolder() . "repos.yml", Config::YAML, array("repositories" => [$this->defaultRepo]));
     }
 
-    public function cacheRepo()
+    /**
+     * Cache repositories information
+     * 
+     * @return void
+     */
+    public function cacheRepo(): void
     {
         $this->reloadConfig();
 
@@ -109,7 +119,12 @@ class APM extends PluginBase
         $this->cachePlugin();
     }
 
-    public function cachePlugin()
+    /**
+     * Cache plugins from repositories
+     * 
+     * @return void
+     */
+    public function cachePlugin(): void
     {
         foreach ($this->repos->get("repositories") as $repo) {
             if (str_ends_with($repo, "/")) {
@@ -139,9 +154,11 @@ class APM extends PluginBase
     }
 
     /**
-     *
+     * Cache loaded plugins
+     * 
+     * @return void
      */
-    public function cacheLoadedPlugin()
+    public function cacheLoadedPlugin(): void
     {
         foreach ($this->getServer()->getPluginManager()->getPlugins() as $plugin) {
             $files = array_diff(scandir($this->getServer()->getDataPath() . "plugins/"), array(".", ".."));
