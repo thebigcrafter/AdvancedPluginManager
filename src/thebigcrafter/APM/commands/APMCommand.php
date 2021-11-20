@@ -13,21 +13,27 @@ use thebigcrafter\APM\commands\subcommands\InstallPluginCommand;
 use thebigcrafter\APM\forms\MenuForm;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
+use thebigcrafter\APM\APM;
 use thebigcrafter\APM\commands\subcommands\RemovePluginCommand;
 
 class APMCommand extends BaseCommand
 {
     protected function prepare(): void
     {
-        $this->setDescription("APM commands");
+        $subCommands = [
+            new AddRepoCommand("add-repo", APM::getLanguage()->translateString("add.repo.command.description")),
+            new RemoveRepoCommand("remove-repo", APM::getLanguage()->translateString("remove.repo.command.description")),
+            new ListRepoCommand("list-repo", APM::getLanguage()->translateString("list.repo.command.description")),
+            new UpdateCommand("update", APM::getLanguage()->translateString("update.command.description")),
+            new InstallPluginCommand("install", APM::getLanguage()->translateString("install.plugin.form.title")),
+            new RemovePluginCommand("remove", APM::getLanguage()->translateString("remove.command.description"))
+        ];
+        $this->setDescription(APM::getLanguage()->translateString("apm.command.description"));
         $this->setPermission("apm.cmd");
 
-        $this->registerSubCommand(new AddRepoCommand("add-repo", "Add repository"));
-        $this->registerSubCommand(new RemoveRepoCommand("remove-repo", "Remove repository"));
-        $this->registerSubCommand(new ListRepoCommand("list-repo", "List repositories"));
-        $this->registerSubCommand(new UpdateCommand("update", "Update repositories"));
-        $this->registerSubCommand(new InstallPluginCommand("install", "Install plugin"));
-        $this->registerSubCommand(new RemovePluginCommand("remove", "Remove plugin"));
+        foreach ($subCommands as $subCommand) {
+            $this->registerSubCommand($subCommand);
+        }
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void

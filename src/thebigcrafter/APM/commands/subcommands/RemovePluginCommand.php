@@ -8,6 +8,7 @@ use CortexPE\Commando\args\RawStringArgument;
 use CortexPE\Commando\BaseSubCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
+use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Remover;
@@ -25,7 +26,7 @@ class RemovePluginCommand extends BaseSubCommand
             $sender->sendForm(RepoForm::getRemovePluginForm());
         } else {
             if (Remover::removePlugin((string) $args["plugin name"])) {
-                $sender->sendMessage("§aPlugin removed successfully!");
+                $sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"));
             } else {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$PLUGIN_NOT_FOUND);
             }

@@ -26,7 +26,7 @@ class InstallPluginCommand extends BaseSubCommand
             $sender->sendForm(RepoForm::getInstallPluginForm());
         } else {
             if (Installer::install((string) $args["plugin name"])) {
-                $sender->sendMessage(APM::$PREFIX . "§aPlugin installed successfully");
+                $sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("install.plugin.success"));
             } else {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$PLUGIN_NOT_FOUND);
             }

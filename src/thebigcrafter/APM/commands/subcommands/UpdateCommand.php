@@ -18,8 +18,8 @@ class UpdateCommand extends BaseSubCommand
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
-        $sender->sendMessage(APM::$PREFIX . TextFormat::YELLOW . "Updating...");
+        $sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("start.update.message"));
         Updater::updateRepo();
-        $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Updated!");
+        $sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("end.update.message"));
     }
 }

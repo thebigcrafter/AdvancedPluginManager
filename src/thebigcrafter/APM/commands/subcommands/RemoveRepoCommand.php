@@ -25,7 +25,7 @@ class RemoveRepoCommand extends BaseSubCommand
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);
             }
             if (Remover::removeRepo((string) $args["url"])) {
-                $sender->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
+                $sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.repo.success"));
             } else {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$URL_NOT_FOUND);
             }

@@ -8,7 +8,6 @@ use jojoe77777\FormAPI\SimpleForm;
 use thebigcrafter\APM\APM;
 use pocketmine\form\Form;
 use pocketmine\Player;
-use pocketmine\utils\TextFormat;
 
 class MenuForm
 {
@@ -30,9 +29,9 @@ class MenuForm
                     $player->sendForm(RepoForm::getRepoListForm());
                     break;
                 case 3:
-                    $player->sendMessage(APM::$PREFIX . TextFormat::YELLOW . "Updating...");
+                    $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("start.update.message"));
                     APM::getInstance()->cacheRepo();
-                    $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Updated!");
+                    $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("end.update.message"));
                     break;
                 case 4:
                     $player->sendForm(RepoForm::getInstallPluginForm());
@@ -42,9 +41,9 @@ class MenuForm
                     break;
             }
         });
-        $buttons = ["Add repository", "Remove repository", "Repositories list", "Update repositories", "Install plugin", "Remove plugin"];
+        $buttons = [APM::getLanguage()->translateString("add.repo.button"), APM::getLanguage()->translateString("remove.repo.button"), APM::getLanguage()->translateString("list.repo.button"), APM::getLanguage()->translateString("update.button"), APM::getLanguage()->translateString("install.plugin.button"), APM::getLanguage()->translateString("remove.plugin.button")];
 
-        $form->setTitle("Menu Form");
+        $form->setTitle(APM::getLanguage()->translateString("menu.form.title"));
 
         foreach ($buttons as $button) {
             $form->addButton($button);

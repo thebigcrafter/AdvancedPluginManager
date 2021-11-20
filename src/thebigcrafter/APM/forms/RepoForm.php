@@ -24,6 +24,10 @@ class RepoForm
     public static function getAddingForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
+            if ($data === null) {
+                return;
+            }
+
             if (Adder::addRepo($data[0])) {
                 $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("add.repo.success"));
             } else {
@@ -42,6 +46,10 @@ class RepoForm
     public static function getRemoveRepoForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
+            if ($data === null) {
+                return;
+            }
+
             if (Remover::removeRepo($data[0])) {
                 $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.repo.success"));
             } else {
@@ -60,6 +68,9 @@ class RepoForm
     public static function getRepoListForm(): Form
     {
         $form = new SimpleForm(function (Player $player, int $data = null) {
+            if ($data === null) {
+                return;
+            }
         });
         $repositoriesList = "";
         foreach (APM::$repoCache as $cache) {
@@ -81,14 +92,18 @@ class RepoForm
     public static function getInstallPluginForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
+            if ($data === null) {
+                return;
+            }
+
             if (Installer::install($data[0])) {
                 $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Installed!");
             } else {
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
             }
         });
-        $form->setTitle("Install plugin");
-        $form->addInput("Please enter plugin name");
+        $form->setTitle(APM::getLanguage()->translateString("install.plugin.form.title"));
+        $form->addInput(APM::getLanguage()->translateString("install.plugin.form.input"));
         return $form;
     }
 
@@ -100,14 +115,18 @@ class RepoForm
     public static function getRemovePluginForm(): Form
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
+            if ($data === null) {
+                return;
+            }
+
             if (Remover::removePlugin($data[0])) {
-                $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
+                $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"));
             } else {
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
             }
         });
-        $form->setTitle("Remove plugin");
-        $form->addInput("Please enter plugin name");
+        $form->setTitle(APM::getLanguage()->translateString("remove.plugin.form.title"));
+        $form->addInput(APM::getLanguage()->translateString("remove.plugin.form.input"));
         return $form;
     }
 }
