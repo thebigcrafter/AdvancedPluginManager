@@ -31,35 +31,35 @@ class APM extends PluginBase
 
     /**
      * APM's prefix
-     * 
+     *
      * @var string
      */
     public static string $PREFIX = "§a[§bAPM§a]§r ";
 
     /**
      * Repositories list
-     * 
+     *
      * @var Config
      */
     public Config $repos;
 
     /**
      * Plugin's config
-     * 
+     *
      * @var Config
      */
     public Config $config;
 
     /**
      * Repositories information cache
-     * 
+     *
      * @var array<mixed>
      */
     public static array $repoCache = [];
 
     /**
      * Plugins information cache
-     * 
+     *
      * @var array<mixed>
      */
     public static array $pluginCache = [];
@@ -73,14 +73,14 @@ class APM extends PluginBase
 
     /**
      * Language
-     * 
+     *
      * @var BaseLang
      */
     private static BaseLang $language;
 
     /**
      * Get instance
-     * 
+     *
      * @return self
      */
     public static function getInstance(): self
@@ -120,7 +120,7 @@ class APM extends PluginBase
 
     /**
      * Cache repositories information
-     * 
+     *
      * @return void
      */
     public function cacheRepo(): void
@@ -152,7 +152,7 @@ class APM extends PluginBase
 
     /**
      * Cache plugins from repositories
-     * 
+     *
      * @return void
      */
     public function cachePlugin(): void
@@ -166,7 +166,7 @@ class APM extends PluginBase
 
             $plugins = json_decode($cache, true);
 
-            self::$repoCache[] = [$cache];
+            self::$pluginCache[] = [$cache];
 
             foreach ($plugins as $plugin) {
                 self::$pluginCache[] = [
@@ -186,7 +186,7 @@ class APM extends PluginBase
 
     /**
      * Cache loaded plugins
-     * 
+     *
      * @return void
      */
     public function cacheLoadedPlugin(): void
