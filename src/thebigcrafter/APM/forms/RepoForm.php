@@ -25,13 +25,13 @@ class RepoForm
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
             if (Adder::addRepo($data[0])) {
-                $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Added!");
+                $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("add.repo.success"));
             } else {
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$INVALID_URL);
             }
         });
-        $form->setTitle("Add repository");
-        $form->addInput("Please enter repository URL");
+        $form->setTitle(APM::getLanguage()->translateString("add.repo.form.title"));
+        $form->addInput(APM::getLanguage()->translateString("add.repo.form.input"));
         return $form;
     }
 
@@ -43,13 +43,13 @@ class RepoForm
     {
         $form = new CustomForm(function (Player $player, array $data = null) {
             if (Remover::removeRepo($data[0])) {
-                $player->sendMessage(APM::$PREFIX . TextFormat::GREEN . "Removed!");
+                $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.repo.success"));
             } else {
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$INVALID_URL);
             }
         });
-        $form->setTitle("Remove repository");
-        $form->addInput("Please enter repository URL");
+        $form->setTitle(APM::getLanguage()->translateString("remove.repo.form.title"));
+        $form->addInput(APM::getLanguage()->translateString("remove.repo.form.input"));
         return $form;
     }
 

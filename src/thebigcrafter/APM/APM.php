@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace thebigcrafter\APM;
 
+use pocketmine\lang\BaseLang;
 use thebigcrafter\APM\commands\APMCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
@@ -16,38 +17,11 @@ class APM extends PluginBase
     use SingletonTrait;
 
     /**
-     * APM's prefix
-     * 
-     * @var string
-     */
-    public static string $PREFIX = "§a[§bAPM§a]§r ";
-
-    /**
-     * Repositories cache
-     * 
-     * @var array<mixed>
-     */
-    public static array $repoCache = [];
-
-    /**
-     * Plugins cache
-     * 
-     * @var array<mixed>
-     */
-    public static array $pluginCache = [];
-
-    /**
-     * Loaded plugins
+     * Language FILE name
      *
-     * @var array<mixed>
+     * @var array<string>
      */
-    public static array $loadedPlugins = [];
-
-    /**
-     * Repositories
-     * @var Config
-     */
-    public Config $repos;
+    private array $languages = ["eng", "vie"];
 
     /**
      * Default repository
@@ -56,7 +30,57 @@ class APM extends PluginBase
     private string $defaultRepo = "https://thebigcrafter.github.io/";
 
     /**
+     * APM's prefix
+     * 
+     * @var string
+     */
+    public static string $PREFIX = "§a[§bAPM§a]§r ";
+
+    /**
+     * Repositories list
+     * 
+     * @var Config
+     */
+    public Config $repos;
+
+    /**
+     * Plugin's config
+     * 
+     * @var Config
+     */
+    public Config $config;
+
+    /**
+     * Repositories information cache
+     * 
+     * @var array<mixed>
+     */
+    public static array $repoCache = [];
+
+    /**
+     * Plugins information cache
+     * 
+     * @var array<mixed>
+     */
+    public static array $pluginCache = [];
+
+    /**
+     * Loaded plugins list
+     *
+     * @var array<mixed>
+     */
+    public static array $loadedPlugins = [];
+
+    /**
+     * Language
+     * 
+     * @var BaseLang
+     */
+    private static BaseLang $language;
+
+    /**
      * Get instance
+     * 
      * @return self
      */
     public static function getInstance(): self
@@ -64,9 +88,15 @@ class APM extends PluginBase
         return self::$instance;
     }
 
+    public static function getLanguage(): BaseLang
+    {
+        return self::$language;
+    }
+
     public function onEnable(): void
     {
         $this->initConfig();
+        $this->initLanguageFiles($this->config->get("language"), $this->languages);
         $this->cacheRepo();
         $this->cacheLoadedPlugin();
 
@@ -84,6 +114,7 @@ class APM extends PluginBase
     {
         @mkdir($this->getDataFolder());
         $this->saveDefaultConfig();
+        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $this->repos = new Config($this->getDataFolder() . "repos.yml", Config::YAML, array("repositories" => [$this->defaultRepo]));
     }
 
@@ -169,5 +200,20 @@ class APM extends PluginBase
                 }
             }
         }
+    }
+
+    public function initLanguageFiles(string $lang, array $languageFiles): void
+    {
+        if (!is_dir($this->getDataFolder() . "lang/")) {
+            @mkdir($this->getDataFolder() . "lang/");
+        }
+
+        foreach ($languageFiles as $file) {
+            if (!is_file($this->getDataFolder() . "lang/" . $file . ".ini")) {
+                $this->saveResource("lang/" . $file . ".ini");
+            }
+        }
+
+        self::$language = new BaseLang($lang, $this->getDataFolder() . "lang/");
     }
 }
