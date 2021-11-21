@@ -1,4 +1,4 @@
-[![PoggitCI](https://poggit.pmmp.io/ci.shield/thebigcrafter/AdvancedPluginManager/~)](https://github.com/thebigcrafter/AdvancedPluginManager)
+[![PoggitCI](https://poggit.pmmp.io/ci.shield/thebigcrafter/AdvancedPluginManager/~)](https://github.com/thebigcrafter/AdvancedPluginManager)[![PHPStan](https://github.com/thebigcrafter/AdvancedPluginManager/actions/workflows/main.yml/badge.svg)](https://github.com/thebigcrafter/AdvancedPluginManager/actions/workflows/main.yml)
 [![License](https://img.shields.io/github/license/thebigcrafter/AdvancedPluginManager)](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE)
 
 # AdvancedPluginManager
