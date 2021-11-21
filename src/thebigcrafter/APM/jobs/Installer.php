@@ -57,6 +57,7 @@ class Installer
      *
      * @param string $fileURL
      * @param string $path
+     * @param array<string> $hash
      *
      * @return bool
      */

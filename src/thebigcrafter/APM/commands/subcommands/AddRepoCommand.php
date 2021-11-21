@@ -21,6 +21,13 @@ class AddRepoCommand extends BaseSubCommand
         $this->registerArgument(0, new RawStringArgument("url", false));
     }
 
+    /**
+     * @param CommandSender $sender
+     * @param string $aliasUsed
+     * @param array<string> $args
+     *
+     * @return void
+     */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {

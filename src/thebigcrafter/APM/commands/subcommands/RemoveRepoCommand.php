@@ -16,6 +16,13 @@ use thebigcrafter\APM\error\ErrorHandler;
 
 class RemoveRepoCommand extends BaseSubCommand
 {
+    /**
+     * @param CommandSender $sender
+     * @param string $aliasUsed
+     * @param array<string> $args
+     *
+     * @return void
+     */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {

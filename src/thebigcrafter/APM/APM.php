@@ -202,6 +202,14 @@ class APM extends PluginBase
         }
     }
 
+    /**
+     * Initialize language files
+     *
+     * @param string $lang
+     * @param array<string> $languageFiles
+     *
+     * @return void
+     */
     public function initLanguageFiles(string $lang, array $languageFiles): void
     {
         if (!is_dir($this->getDataFolder() . "lang/")) {
