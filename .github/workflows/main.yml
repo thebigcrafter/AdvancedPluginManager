@@ -22,14 +22,6 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
 
-      - name: Restore Composer package cache
-        id: composer-cache
-        uses: actions/cache@v2
-        with:
-          path: "~/.cache/composer"
-          key: "php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}"
-          restore-keys: "php-${{ matrix.php }}-composer-"
-
       - name: Install PHPStan Composer dependencies
         run: composer install --prefer-dist --no-interaction --ignore-platform-reqs
 
