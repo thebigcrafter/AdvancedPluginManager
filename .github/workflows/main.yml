@@ -1,30 +1,37 @@
 name: PHPStan
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
+    name: PHPStan analysis
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php:
+          - "8.0"
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: shivammathur/setup-php@v2
-    with:
-      php-version: '8.0'
-      
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
-      
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-          
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-      
-    - name: Run PHPStan
-      run: composer run-script analyse-src
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Restore Composer package cache
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: "~/.cache/composer"
+          key: "php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}"
+          restore-keys: "php-${{ matrix.php }}-composer-"
+
+      - name: Install PHPStan Composer dependencies
+        run: composer install --prefer-dist --no-interaction --ignore-platform-reqs
+
+      - name: Run PHPStan
+        run: composer run-script analyse-src
