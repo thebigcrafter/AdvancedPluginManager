@@ -1,16 +1,15 @@
 {
     "name": "thebigcrafter/advancedpluginmanager",
-    "description": "A plugin manager for PocketMine servers",
+    "description": "Plugin manager for PocketMine-MP",
     "type": "project",
     "require": {
         "php": "^8.0",
-        "pocketmine/pocketmine-mp": "^3.25",
-        "cortexpe/commando": "dev-master",
-        "jojoe77777/libformapi": "dev-master"
+        "pocketmine/pocketmine-mp": "^4.0",
+        "cortexpe/commando": "dev-master"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.2",
-        "phpstan/phpstan": "^1.1"
+        "phpstan/phpstan": "^1.2",
+        "friendsofphp/php-cs-fixer": "^3.3"
     },
     "license": "GPL-3.0-only",
     "autoload": {
@@ -26,12 +25,6 @@
         {
             "name": "MintoD",
             "email": "tobythedev7@outlook.com"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/PocketMine-MP-VN-Group/FormAPI"
         }
     ]
 }
