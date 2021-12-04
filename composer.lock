@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec085faeec49532a1468813f477ac705",
+    "content-hash": "fd34063eb04e8e0cd21c8dd0b46e8cdd",
     "packages": [
         {
             "name": "adhocore/json-comment",
@@ -154,6 +154,36 @@
                 "source": "https://github.com/CortexPE/Commando/tree/master"
             },
             "time": "2021-09-06T09:14:24+00:00"
+        },
+        {
+            "name": "dktapps/pmforms",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MintoD/pmforms.git",
+                "reference": "586551ef6835b23e5068ab9c608a219274e18978"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MintoD/pmforms/zipball/586551ef6835b23e5068ab9c608a219274e18978",
+                "reference": "586551ef6835b23e5068ab9c608a219274e18978",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dktapps\\Pmforms\\": "src/dktapps/pmforms/"
+                }
+            },
+            "license": [
+                "LGPL-3.0-only"
+            ],
+            "description": "Form API library for PocketMine-MP plugins",
+            "support": {
+                "source": "https://github.com/MintoD/pmforms/tree/master"
+            },
+            "time": "2021-12-04T12:14:26+00:00"
         },
         {
             "name": "fgrosse/phpasn1",
@@ -3434,7 +3464,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cortexpe/commando": 20
+        "cortexpe/commando": 20,
+        "dktapps/pmforms": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

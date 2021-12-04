@@ -6,8 +6,8 @@ projects:
   AdvancedPluginManager:
     path: ""
     libs:
-    - src: jojoe77777/FormAPI/libFormAPI
-      version: ^1.3.0
+    - src: dktapps-pm-pl/pmforms/pmforms
+      version: ^2.0.0
     - src: CortexPE/Commando/Commando
       version: ^2.1.1
     - src: MintoD/libMCUnicodeChars/libMCUnicodeChars

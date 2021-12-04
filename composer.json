@@ -5,7 +5,8 @@
     "require": {
         "php": "^8.0",
         "pocketmine/pocketmine-mp": "^4.0",
-        "cortexpe/commando": "dev-master"
+        "cortexpe/commando": "dev-master",
+        "dktapps/pmforms": "dev-master"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.2",
@@ -25,6 +26,12 @@
         {
             "name": "MintoD",
             "email": "tobythedev7@outlook.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/MintoD/pmforms"
         }
     ]
 }
