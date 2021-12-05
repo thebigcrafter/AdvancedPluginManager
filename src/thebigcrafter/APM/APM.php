@@ -112,9 +112,8 @@ class APM extends PluginBase
      */
     public function initConfig(): void
     {
-        @mkdir($this->getDataFolder());
         $this->saveDefaultConfig();
-        $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $this->config = $this->getConfig();
         $this->repos = new Config($this->getDataFolder() . "repos.yml", Config::YAML, array("repositories" => [$this->defaultRepo]));
     }
 
