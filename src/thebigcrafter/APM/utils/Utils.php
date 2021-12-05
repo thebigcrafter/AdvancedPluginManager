@@ -16,8 +16,8 @@ class Utils
      */
     public static function isAPMRepo(string $url): bool
     {
-        $release = Internet::getURL($url . "Release.json");
-        $plugins = Internet::getURL($url . "Plugins.json");
+        $release = Internet::getURL($url . "Release.json")->getBody();
+        $plugins = Internet::getURL($url . "Plugins.json")->getBody();
 
         if ($plugins === false || $release === false) {
             return false;

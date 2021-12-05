@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace thebigcrafter\APM\forms;
 
-use jojoe77777\FormAPI\SimpleForm;
+use dktapps\pmforms\MenuForm as PmformsMenuForm;
+use dktapps\pmforms\MenuOption;
 use thebigcrafter\APM\APM;
 use pocketmine\form\Form;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
 class MenuForm
 {
@@ -17,8 +18,14 @@ class MenuForm
      */
     public static function getMenuForm(): Form
     {
-        $form = new SimpleForm(function (Player $player, int $data = null) {
-            switch ($data) {
+        $buttons = [];
+
+        foreach ([APM::getLanguage()->translateString("add.repo.button"), APM::getLanguage()->translateString("remove.repo.button"), APM::getLanguage()->translateString("list.repo.button"), APM::getLanguage()->translateString("update.button"), APM::getLanguage()->translateString("install.plugin.button"), APM::getLanguage()->translateString("remove.plugin.button")] as $name) {
+            $buttons[] = new MenuOption($name);
+        }
+
+        $form = new PmformsMenuForm(APM::getLanguage()->translateString("menu.form.title"), "", $buttons, function (Player $player, int $selected): void {
+            switch ($selected) {
                 case 0:
                     $player->sendForm(RepoForm::getAddingForm());
                     break;
@@ -26,7 +33,8 @@ class MenuForm
                     $player->sendForm(RepoForm::getRemoveRepoForm());
                     break;
                 case 2:
-                    $player->sendForm(RepoForm::getRepoListForm());
+                    // TODO: Move this to get repo list command
+                    RepoForm::getRepoListForm($player);
                     break;
                 case 3:
                     $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("start.update.message"));
@@ -41,14 +49,6 @@ class MenuForm
                     break;
             }
         });
-        $buttons = [APM::getLanguage()->translateString("add.repo.button"), APM::getLanguage()->translateString("remove.repo.button"), APM::getLanguage()->translateString("list.repo.button"), APM::getLanguage()->translateString("update.button"), APM::getLanguage()->translateString("install.plugin.button"), APM::getLanguage()->translateString("remove.plugin.button")];
-
-        $form->setTitle(APM::getLanguage()->translateString("menu.form.title"));
-
-        foreach ($buttons as $button) {
-            $form->addButton($button);
-        }
-
         return $form;
     }
 }

@@ -2,8 +2,7 @@
 
 namespace thebigcrafter\APM\error;
 
-use Error;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\utils\MainLogger;
 use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
@@ -58,6 +57,6 @@ class ErrorHandler
      */
     public static function sendErrorToConsole(int $errorCode): void
     {
-        MainLogger::getLogger()->error(APM::$PREFIX . TextFormat::DARK_RED . self::getErrorMessage($errorCode));
+        APM::getInstance()->getLogger()->error(APM::$PREFIX . TextFormat::DARK_RED . self::getErrorMessage($errorCode));
     }
 }

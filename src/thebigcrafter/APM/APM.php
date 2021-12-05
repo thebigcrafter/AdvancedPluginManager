@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace thebigcrafter\APM;
 
-use pocketmine\lang\BaseLang;
+use pocketmine\lang\Language;
 use thebigcrafter\APM\commands\APMCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
@@ -74,9 +74,9 @@ class APM extends PluginBase
     /**
      * Language
      *
-     * @var BaseLang
+     * @var Language
      */
-    private static BaseLang $language;
+    private static Language $language;
 
     /**
      * Get instance
@@ -88,7 +88,7 @@ class APM extends PluginBase
         return self::$instance;
     }
 
-    public static function getLanguage(): BaseLang
+    public static function getLanguage(): Language
     {
         return self::$language;
     }
@@ -131,9 +131,9 @@ class APM extends PluginBase
             $this->getLogger()->info(TextFormat::YELLOW . "Caching repository: " . TextFormat::RESET . $repo);
 
             if (str_ends_with($repo, "/")) {
-                $cache = Internet::getURL($repo . "Release.json");
+                $cache = Internet::getURL($repo . "Release.json")->getBody();
             } else {
-                $cache = Internet::getURL($repo . "/Release.json");
+                $cache = Internet::getURL($repo . "/Release.json")->getBody();
             }
 
             $json = json_decode($cache);
@@ -158,9 +158,9 @@ class APM extends PluginBase
     {
         foreach ($this->repos->get("repositories") as $repo) {
             if (str_ends_with($repo, "/")) {
-                $cache = Internet::getURL($repo . "Plugins.json");
+                $cache = Internet::getURL($repo . "Plugins.json")->getBody();
             } else {
-                $cache = Internet::getURL($repo . "/Plugins.json");
+                $cache = Internet::getURL($repo . "/Plugins.json")->getBody();
             }
 
             $plugins = json_decode($cache, true);
@@ -221,6 +221,6 @@ class APM extends PluginBase
             }
         }
 
-        self::$language = new BaseLang($lang, $this->getDataFolder() . "lang/");
+        self::$language = new Language($lang, $this->getDataFolder() . "lang/");
     }
 }

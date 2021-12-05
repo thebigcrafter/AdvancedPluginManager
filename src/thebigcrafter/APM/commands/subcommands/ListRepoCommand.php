@@ -8,7 +8,7 @@ use CortexPE\Commando\BaseSubCommand;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\forms\RepoForm;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
 class ListRepoCommand extends BaseSubCommand
 {
@@ -22,7 +22,7 @@ class ListRepoCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getRepoListForm());
+            RepoForm::getRepoListForm($sender);
         } else {
             $repositoriesList = "";
             foreach (APM::getInstance()->repos->get("repositories") as $repo) {

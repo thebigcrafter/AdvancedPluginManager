@@ -10,8 +10,7 @@ use thebigcrafter\APM\APM;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Adder;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
-use pocketmine\utils\TextFormat;
+use pocketmine\player\Player;
 use thebigcrafter\APM\error\ErrorHandler;
 
 class AddRepoCommand extends BaseSubCommand

@@ -12,7 +12,7 @@ use thebigcrafter\APM\commands\subcommands\UpdateCommand;
 use thebigcrafter\APM\commands\subcommands\InstallPluginCommand;
 use thebigcrafter\APM\forms\MenuForm;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\commands\subcommands\RemovePluginCommand;
 

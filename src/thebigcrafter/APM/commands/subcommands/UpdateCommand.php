@@ -6,7 +6,6 @@ namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\jobs\Updater;
 

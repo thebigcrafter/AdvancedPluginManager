@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace thebigcrafter\APM\utils;
 
-use pocketmine\Player;
+use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
 
 class Notifier

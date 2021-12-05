@@ -63,7 +63,7 @@ class Installer
      */
     public static function downloadPlugin(string $fileURL, string $path, array $hash): bool
     {
-        $file = Internet::getURL($fileURL);
+        $file = Internet::getURL($fileURL)->getBody();
         $fileName = basename($fileURL);
         $filePath = $path . $fileName;
 
