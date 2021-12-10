@@ -5,7 +5,7 @@
     "require": {
         "php": "^8.0",
         "pocketmine/pocketmine-mp": "^4.0",
-        "cortexpe/commando": "dev-master",
+        "cortexpe/commando": "dev-PM4",
         "dktapps/pmforms": "dev-master"
     },
     "require-dev": {
