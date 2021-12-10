@@ -12,7 +12,6 @@ use thebigcrafter\APM\jobs\Adder;
 use thebigcrafter\APM\jobs\Remover;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
-use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\jobs\Installer;
 
