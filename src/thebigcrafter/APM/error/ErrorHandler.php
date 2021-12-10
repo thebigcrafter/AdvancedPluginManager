@@ -3,7 +3,6 @@
 namespace thebigcrafter\APM\error;
 
 use pocketmine\player\Player;
-use pocketmine\utils\MainLogger;
 use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\utils\Notifier;
