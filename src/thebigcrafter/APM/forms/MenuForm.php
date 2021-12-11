@@ -14,9 +14,9 @@ class MenuForm
 {
     /**
      * Return menu form
-     * @return Form
+     * @return PmformsMenuForm
      */
-    public static function getMenuForm(): Form
+    public static function getMenuForm(): PmformsMenuForm
     {
         $buttons = [];
 

@@ -10,7 +10,6 @@ use dktapps\pmforms\element\Input;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\jobs\Adder;
 use thebigcrafter\APM\jobs\Remover;
-use pocketmine\form\Form;
 use pocketmine\player\Player;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\jobs\Installer;
@@ -20,9 +19,9 @@ class RepoForm
     /**
      * Get adding form
      *
-     * @return Form
+     * @return CustomForm
      */
-    public static function getAddingForm(): Form
+    public static function getAddingForm(): CustomForm
     {
         $form = new CustomForm(APM::getLanguage()->translateString("add.repo.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("add.repo.form.input"))
@@ -43,9 +42,9 @@ class RepoForm
     /**
      * Get remove repo form
      *
-     * @return Form
+     * @return CustomForm
      */
-    public static function getRemoveRepoForm(): Form
+    public static function getRemoveRepoForm(): CustomForm
     {
         $form = new CustomForm(APM::getLanguage()->translateString("remove.repo.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("remove.repo.form.input"))
@@ -87,9 +86,9 @@ class RepoForm
     /**
      * Get install plugin form
      *
-     * @return Form
+     * @return CustomForm
      */
-    public static function getInstallPluginForm(): Form
+    public static function getInstallPluginForm(): CustomForm
     {
         $form = new CustomForm(APM::getLanguage()->translateString("install.plugin.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("install.plugin.form.input"))
@@ -110,9 +109,9 @@ class RepoForm
 
     /**
      * Get remove plugin form
-     * @return Form
+     * @return CustomForm
      */
-    public static function getRemovePluginForm(): Form
+    public static function getRemovePluginForm(): CustomForm
     {
         $form = new CustomForm(APM::getLanguage()->translateString("remove.plugin.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("remove.plugin.form.input"))
