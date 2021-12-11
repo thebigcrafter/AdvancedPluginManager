@@ -8,9 +8,8 @@ use pocketmine\lang\Language;
 use thebigcrafter\APM\commands\APMCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use pocketmine\utils\Internet;
 use pocketmine\utils\SingletonTrait;
-use pocketmine\utils\TextFormat;
+use thebigcrafter\APM\jobs\Cache;
 
 class APM extends PluginBase
 {
@@ -30,44 +29,37 @@ class APM extends PluginBase
     private string $defaultRepo = "https://thebigcrafter.github.io/";
 
     /**
-     * APM's prefix
+     * Prefix
      *
      * @var string
      */
     public static string $PREFIX = "§a[§bAPM§a]§r ";
 
     /**
-     * Repositories list
-     *
-     * @var Config
-     */
-    public Config $repos;
-
-    /**
-     * Plugin's config
+     * Plugin config
      *
      * @var Config
      */
     public Config $config;
 
     /**
-     * Repositories information cache
+     * Plugins cache
      *
-     * @var array<mixed>
+     * @var string[]
      */
-    public static array $repoCache = [];
+    public static array $reposPluginsCache = [];
 
     /**
-     * Plugins information cache
-     *
-     * @var array<mixed>
+     * Repositories information cache
+     * 
+     * @var string[]
      */
-    public static array $pluginCache = [];
+    public static array $reposInfoCache = [];
 
     /**
      * Loaded plugins list
      *
-     * @var array<mixed>
+     * @var mixed[]
      */
     public static array $loadedPlugins = [];
 
@@ -95,14 +87,15 @@ class APM extends PluginBase
 
     public function onEnable(): void
     {
+        self::setInstance($this);
+
         $this->initConfig();
         $this->initLanguageFiles($this->config->get("language"), $this->languages);
         $this->cacheRepo();
-        $this->cacheLoadedPlugin();
+        Cache::cacheLoadedPlugins();
 
         $this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced Plugin Manager"));
 
-        self::setInstance($this);
     }
 
     /**
@@ -126,25 +119,7 @@ class APM extends PluginBase
     {
         $this->reloadConfig();
 
-        $repositories = $this->repos->get("repositories");
-        foreach ($repositories as $repo) {
-            $this->getLogger()->info(TextFormat::YELLOW . "Caching repository: " . TextFormat::RESET . $repo);
-
-            if (str_ends_with($repo, "/")) {
-                $cache = Internet::getURL($repo . "Release.json")->getBody();
-            } else {
-                $cache = Internet::getURL($repo . "/Release.json")->getBody();
-            }
-
-            $json = json_decode($cache);
-
-            self::$repoCache[] = [
-                "repo" => $repo,
-                "label" => $json->label,
-                "suite" => $json->suite,
-                "codename" => $json->codename
-            ];
-        }
+        Cache::cacheReposInfo($this->repos->get("repositories"));
 
         $this->cachePlugin();
     }
@@ -156,56 +131,14 @@ class APM extends PluginBase
      */
     public function cachePlugin(): void
     {
-        foreach ($this->repos->get("repositories") as $repo) {
-            if (str_ends_with($repo, "/")) {
-                $cache = Internet::getURL($repo . "Plugins.json")->getBody();
-            } else {
-                $cache = Internet::getURL($repo . "/Plugins.json")->getBody();
-            }
-
-            $plugins = json_decode($cache, true);
-
-            self::$pluginCache[] = [$cache];
-
-            foreach ($plugins as $plugin) {
-                self::$pluginCache[] = [
-                    "plugins" => $plugin["plugin"],
-                    "name" => $plugin["name"],
-                    "author" => $plugin["author"],
-                    "version" => $plugin["version"],
-                    "file" => $plugin["file"],
-                    "md5" => $plugin["md5"],
-                    "sha1" => $plugin["sha1"],
-                    "sha256" => $plugin["sha256"],
-                    "sha512" => $plugin["sha512"]
-                ];
-            }
-        }
-    }
-
-    /**
-     * Cache loaded plugins
-     *
-     * @return void
-     */
-    public function cacheLoadedPlugin(): void
-    {
-        foreach ($this->getServer()->getPluginManager()->getPlugins() as $plugin) {
-            $files = array_diff(scandir($this->getServer()->getDataPath() . "plugins/"), array(".", ".."));
-
-            foreach ($files as $file) {
-                if (strpos($file, $plugin->getName()) !== false && str_ends_with($file, ".phar") === true) {
-                    self::$loadedPlugins[] = ["name" => $plugin->getName(), "path" => $this->getServer()->getDataPath() . "plugins/" . $file];
-                }
-            }
-        }
+        Cache::cacheReposPlugins($this->repos->get("repositories"));
     }
 
     /**
      * Initialize language files
      *
      * @param string $lang
-     * @param array<string> $languageFiles
+     * @param string[] $languageFiles
      *
      * @return void
      */

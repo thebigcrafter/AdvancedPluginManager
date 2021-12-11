@@ -11,6 +11,6 @@ class Updater
     public static function updateRepo(): void
     {
         APM::getInstance()->cacheRepo();
-        APM::getInstance()->cacheLoadedPlugin();
+        Cache::cacheLoadedPlugins();
     }
 }
