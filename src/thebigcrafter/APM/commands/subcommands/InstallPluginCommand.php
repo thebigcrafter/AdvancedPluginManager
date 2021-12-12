@@ -15,6 +15,9 @@ use thebigcrafter\APM\error\ErrorHandler;
 
 class InstallPluginCommand extends BaseSubCommand
 {
+    /**
+     * @throws \CortexPE\Commando\exception\ArgumentOrderException
+     */
     protected function prepare(): void
     {
         $this->registerArgument(0, new RawStringArgument("plugin name"));

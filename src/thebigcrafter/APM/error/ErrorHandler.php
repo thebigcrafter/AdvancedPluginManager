@@ -16,22 +16,13 @@ class ErrorHandler
 
     private static function getErrorMessage(int $errorCode): string
     {
-        switch ($errorCode) {
-            case self::$INVALID_URL:
-                return "Invalid URL";
-                break;
-            case self::$PLUGIN_NOT_FOUND:
-                return "Plugin not found";
-                break;
-            case self::$URL_NOT_FOUND:
-                return "URL not found";
-                break;
-            case self::$IS_NOT_A_APM_REPO:
-                return "Is not a APM repository";
-                break;
-            default:
-                return "Unknown error";
-        }
+        return match ($errorCode) {
+            self::$INVALID_URL => "Invalid URL",
+            self::$PLUGIN_NOT_FOUND => "Plugin not found",
+            self::$URL_NOT_FOUND => "URL not found",
+            self::$IS_NOT_A_APM_REPO => "Is not a APM repository",
+            default => "Unknown error",
+        };
     }
 
     /**

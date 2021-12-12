@@ -39,7 +39,7 @@ class APMCommand extends BaseCommand
     /**
      * @param CommandSender $sender
      * @param string $aliasUsed
-     * @param array<mixed> $args
+     * @param array $args
      *
      * @return void
      */

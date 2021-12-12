@@ -9,8 +9,12 @@ class Adder
 {
     /**
      * Add repo. If url is valid, return true else return false
+     *
      * @param string $url
+     *
      * @return bool
+     *
+     * @throws \JsonException
      */
     public static function addRepo(string $url): bool
     {

@@ -24,7 +24,7 @@ class MenuForm
             $buttons[] = new MenuOption($name);
         }
 
-        $form = new PmformsMenuForm(APM::getLanguage()->translateString("menu.form.title"), "", $buttons, function (Player $player, int $selected): void {
+        return new PmformsMenuForm(APM::getLanguage()->translateString("menu.form.title"), "", $buttons, function (Player $player, int $selected): void {
             switch ($selected) {
                 case 0:
                     $player->sendForm(RepoForm::getAddingForm());
@@ -49,6 +49,5 @@ class MenuForm
                     break;
             }
         });
-        return $form;
     }
 }

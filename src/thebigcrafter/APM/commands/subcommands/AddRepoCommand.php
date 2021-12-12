@@ -6,6 +6,7 @@ namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
 use CortexPE\Commando\args\RawStringArgument;
+use CortexPE\Commando\exception\ArgumentOrderException;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Adder;
@@ -15,17 +16,16 @@ use thebigcrafter\APM\error\ErrorHandler;
 
 class AddRepoCommand extends BaseSubCommand
 {
+    /**
+     * @throws ArgumentOrderException
+     */
     protected function prepare(): void
     {
         $this->registerArgument(0, new RawStringArgument("url", false));
     }
 
     /**
-     * @param CommandSender $sender
-     * @param string $aliasUsed
-     * @param array<string> $args
-     *
-     * @return void
+     * @throws \JsonException
      */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {

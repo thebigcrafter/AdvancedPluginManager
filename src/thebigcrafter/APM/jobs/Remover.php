@@ -7,9 +7,12 @@ use thebigcrafter\APM\APM;
 class Remover
 {
     /**
-     * Remove repo. If removed, return true else if cannot find repo return false
+     * Remove repo. If removed, return true else if it cannot find repo return false
+     *
      * @param string $url
      * @return bool
+     *
+     * @throws \JsonException
      */
     public static function removeRepo(string $url): bool
     {
@@ -26,7 +29,7 @@ class Remover
     }
 
     /**
-     * Remove plugin. If removed, return true else if cannot find plugin return false
+     * Remove plugin. If removed, return true else if it cannot find plugin return false
      *
      * @param string $name
      *

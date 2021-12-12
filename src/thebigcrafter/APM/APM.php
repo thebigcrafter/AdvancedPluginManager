@@ -36,6 +36,11 @@ class APM extends PluginBase
     public static string $PREFIX = "§a[§bAPM§a]§r ";
 
     /**
+     * Repositories list
+     */
+    public Config $repos;
+
+    /**
      * Plugin config
      *
      * @var Config
@@ -59,7 +64,7 @@ class APM extends PluginBase
     /**
      * Loaded plugins list
      *
-     * @var mixed[]
+     * @var array
      */
     public static array $loadedPlugins = [];
 

@@ -23,7 +23,7 @@ class RepoForm
      */
     public static function getAddingForm(): CustomForm
     {
-        $form = new CustomForm(APM::getLanguage()->translateString("add.repo.form.title"), [
+        return new CustomForm(APM::getLanguage()->translateString("add.repo.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("add.repo.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
             if ($res->getString("pluginName") === null) {
@@ -36,7 +36,6 @@ class RepoForm
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$INVALID_URL);
             }
         });
-        return $form;
     }
 
     /**
@@ -46,7 +45,7 @@ class RepoForm
      */
     public static function getRemoveRepoForm(): CustomForm
     {
-        $form = new CustomForm(APM::getLanguage()->translateString("remove.repo.form.title"), [
+        return new CustomForm(APM::getLanguage()->translateString("remove.repo.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("remove.repo.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
             if ($res->getString("pluginName") === null) {
@@ -59,8 +58,6 @@ class RepoForm
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$INVALID_URL);
             }
         });
-
-        return $form;
     }
 
     /**
@@ -73,7 +70,7 @@ class RepoForm
     public static function getRepoListForm(Player $player): void
     {
         $repositoriesList = "";
-        foreach (APM::$repoCache as $cache) {
+        foreach (APM::$reposPluginsCache as $cache) {
             foreach (APM::getInstance()->repos->get("repositories") as $repo) {
                 if ($cache["repo"] == $repo) {
                     $repositoriesList = $repositoriesList . "Name: " . $cache["label"] . "\n" . "Codename: " . $cache["codename"] . "\n" . "Repository URL: " . $repo . "\n\n";
@@ -90,7 +87,7 @@ class RepoForm
      */
     public static function getInstallPluginForm(): CustomForm
     {
-        $form = new CustomForm(APM::getLanguage()->translateString("install.plugin.form.title"), [
+        return new CustomForm(APM::getLanguage()->translateString("install.plugin.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("install.plugin.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
             if ($res->getString("pluginName") === null) {
@@ -103,8 +100,6 @@ class RepoForm
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
             }
         });
-
-        return $form;
     }
 
     /**
@@ -113,7 +108,7 @@ class RepoForm
      */
     public static function getRemovePluginForm(): CustomForm
     {
-        $form = new CustomForm(APM::getLanguage()->translateString("remove.plugin.form.title"), [
+        return new CustomForm(APM::getLanguage()->translateString("remove.plugin.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("remove.plugin.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
             if ($res->getString("pluginName") === null) {
@@ -126,7 +121,5 @@ class RepoForm
                 ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
             }
         });
-
-        return $form;
     }
 }

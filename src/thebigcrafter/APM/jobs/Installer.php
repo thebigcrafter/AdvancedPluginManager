@@ -41,7 +41,7 @@ class Installer
 
         foreach (APM::$reposPluginsCache as $plugin) {
             if ($plugin["version"] == $latestVersion && $plugin["name"] == $pluginName) {
-                $pluginURL = $plugin["file"];
+                $pluginURL = $plugin["download_url"];
                 $hash = ["md5" => $plugin["md5"], "sha1" => $plugin["sha1"], "sha256" => $plugin["sha256"], "sha512" => $plugin["sha512"]];
             }
         }

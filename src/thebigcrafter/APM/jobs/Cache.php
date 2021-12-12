@@ -75,7 +75,7 @@ class Cache
             $files = array_diff(scandir(APM::getInstance()->getServer()->getDataPath() . "plugins/"), array(".", ".."));
 
             foreach ($files as $file) {
-                if (strpos($file, $plugin->getName()) !== false && str_ends_with($file, ".phar") === true) {
+                if (str_contains($file, $plugin->getName()) && str_ends_with($file, ".phar") === true) {
                     APM::$loadedPlugins[] = ["name" => $plugin->getName(), "path" => APM::getInstance()->getServer()->getDataPath() . "plugins/" . $file];
                 }
             }

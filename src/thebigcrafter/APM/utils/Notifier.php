@@ -12,6 +12,7 @@ class Notifier
     /**
      * Send a red message to a player
      *
+     * @param Player $player
      * @param string $message
      *
      * @return void
@@ -24,6 +25,7 @@ class Notifier
     /**
      * Send a green message to a player
      *
+     * @param Player $player
      * @param string $message
      *
      * @return void
@@ -36,6 +38,7 @@ class Notifier
     /**
      * Send a yellow message to a player
      *
+     * @param Player $player
      * @param string $message
      *
      * @return void

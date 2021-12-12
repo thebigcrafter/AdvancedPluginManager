@@ -19,7 +19,7 @@ class Utils
         $release = Internet::getURL($url . "Release.json")->getBody();
         $plugins = Internet::getURL($url . "Plugins.json")->getBody();
 
-        if ($plugins === false || $release === false) {
+        if ($plugins == false || $release == false) {
             return false;
         }
 
