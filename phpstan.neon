@@ -1,11 +1,11 @@
 parameters:
 	level: 6
 	paths:
-		- src
+		- source/src
 	excludePaths:
 		analyse:
 			- src/thebigcrafter/APM/error
 	scanDirectories:
-		- phar:///vendor/pmforms.phar/src/
+		- phar:///source/vendor/pmforms.phar/src/
 	excludes_analyse:
 		- source/vendor
