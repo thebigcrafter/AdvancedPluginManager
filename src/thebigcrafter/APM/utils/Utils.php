@@ -34,6 +34,11 @@ class Utils
         // TODO: Check the Plugins.json is valid.
     }
 
+    /**
+     * @param array<string> $versions
+     *
+     * @return string
+     */
     public static function getLatestVersion(array $versions): string
     {
         $latest = "";

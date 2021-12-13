@@ -6,6 +6,8 @@ namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\args\RawStringArgument;
 use CortexPE\Commando\BaseSubCommand;
+use CortexPE\Commando\exception\ArgumentOrderException;
+use JsonException;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Remover;
@@ -15,14 +17,17 @@ use thebigcrafter\APM\error\ErrorHandler;
 
 class RemoveRepoCommand extends BaseSubCommand
 {
-
     /**
-     * @throws \JsonException
+     * @param CommandSender $sender
+     * @param string $aliasUsed
+     * @param array<string> $args
+     *
+     * @throws JsonException
      */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getRemoveRepoForm());
+            $sender->sendForm(RepoForm::getRemoveRepoForm()); // @phpstan-ignore-line
         } else {
             if (!isset($args["url"])) {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);
@@ -36,7 +41,7 @@ class RemoveRepoCommand extends BaseSubCommand
     }
 
     /**
-     * @throws \CortexPE\Commando\exception\ArgumentOrderException
+     * @throws ArgumentOrderException
      */
     protected function prepare(): void
     {

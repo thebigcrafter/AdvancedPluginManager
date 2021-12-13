@@ -24,19 +24,19 @@ class APM extends PluginBase
     /**
      * Plugins cache
      *
-     * @var array
+     * @var array<string, mixed>
      */
     public static array $reposPluginsCache = [];
     /**
      * Repositories information cache
      *
-     * @var array
+     * @var array<string, mixed>
      */
     public static array $reposInfoCache = [];
     /**
      * Loaded plugins list
      *
-     * @var array
+     * @var array<string, string>
      */
     public static array $loadedPlugins = [];
     /**
@@ -99,7 +99,6 @@ class APM extends PluginBase
         Cache::cacheLoadedPlugins();
 
         $this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced Plugin Manager"));
-
     }
 
     /**

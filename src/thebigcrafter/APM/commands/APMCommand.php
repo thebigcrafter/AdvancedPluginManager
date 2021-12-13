@@ -22,14 +22,14 @@ class APMCommand extends BaseCommand
     /**
      * @param CommandSender $sender
      * @param string $aliasUsed
-     * @param array $args
+     * @param array<string> $args
      *
      * @return void
      */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(MenuForm::getMenuForm());
+            $sender->sendForm(MenuForm::getMenuForm()); // @phpstan-ignore-line
         } else {
             $this->sendUsage();
         }
