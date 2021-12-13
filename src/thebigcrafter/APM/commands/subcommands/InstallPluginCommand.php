@@ -34,7 +34,7 @@ class InstallPluginCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getInstallPluginForm());
+            $sender->sendForm(RepoForm::getInstallPluginForm()); // @phpstan-ignore-line
         } else {
             if (Installer::install((string) $args["plugin name"])) {
                 $sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("install.plugin.success"));

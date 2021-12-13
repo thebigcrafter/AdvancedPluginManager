@@ -27,7 +27,7 @@ class RemoveRepoCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getRemoveRepoForm());
+            $sender->sendForm(RepoForm::getRemoveRepoForm()); // @phpstan-ignore-line
         } else {
             if (!isset($args["url"])) {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);

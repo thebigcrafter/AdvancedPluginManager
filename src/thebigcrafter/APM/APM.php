@@ -24,19 +24,19 @@ class APM extends PluginBase
     /**
      * Plugins cache
      *
-     * @var array<array<string, string|int>>
+     * @var array<string, mixed>
      */
     public static array $reposPluginsCache = [];
     /**
      * Repositories information cache
      *
-     * @var array<array<string, string>>
+     * @var array<string, mixed>
      */
     public static array $reposInfoCache = [];
     /**
      * Loaded plugins list
      *
-     * @var array<array<string, string>>
+     * @var array<string, string>
      */
     public static array $loadedPlugins = [];
     /**
