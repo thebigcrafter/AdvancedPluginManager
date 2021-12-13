@@ -70,10 +70,10 @@ class RepoForm
     public static function getRepoListForm(Player $player): void
     {
         $repositoriesList = "";
-        foreach (APM::$reposPluginsCache as $cache) {
+        foreach (APM::$reposInfoCache as $cache) {
             foreach (APM::getInstance()->repos->get("repositories") as $repo) {
                 if ($cache["repo"] == $repo) {
-                    $repositoriesList = $repositoriesList . "Name: " . $cache["label"] . "\n" . "Codename: " . $cache["codename"] . "\n" . "Repository URL: " . $repo . "\n\n";
+                    $repositoriesList = $repositoriesList . "Name: " . $cache["label"] . "\n" . "Description: " . $cache["description"] . "\n" . "Repository URL: " . $repo . "\n\n";
                 }
             }
         }

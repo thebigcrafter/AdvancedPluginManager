@@ -2,6 +2,7 @@
 
 namespace thebigcrafter\APM\jobs;
 
+use JsonException;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\utils\Utils;
 
@@ -14,7 +15,7 @@ class Adder
      *
      * @return bool
      *
-     * @throws \JsonException
+     * @throws JsonException
      */
     public static function addRepo(string $url): bool
     {

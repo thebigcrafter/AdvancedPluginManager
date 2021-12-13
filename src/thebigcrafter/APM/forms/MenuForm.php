@@ -6,9 +6,8 @@ namespace thebigcrafter\APM\forms;
 
 use dktapps\pmforms\MenuForm as PmformsMenuForm;
 use dktapps\pmforms\MenuOption;
-use thebigcrafter\APM\APM;
-use pocketmine\form\Form;
 use pocketmine\player\Player;
+use thebigcrafter\APM\APM;
 
 class MenuForm
 {
@@ -20,7 +19,7 @@ class MenuForm
     {
         $buttons = [];
 
-        foreach ([APM::getLanguage()->translateString("add.repo.button"), APM::getLanguage()->translateString("remove.repo.button"), APM::getLanguage()->translateString("list.repo.button"), APM::getLanguage()->translateString("update.button"), APM::getLanguage()->translateString("install.plugin.button"), APM::getLanguage()->translateString("remove.plugin.button")] as $name) {
+        foreach ([APM::getLanguage()->translateString("add.repo.button"), APM::getLanguage()->translateString("remove.repo.button"), APM::getLanguage()->translateString("list.repo.button"), APM::getLanguage()->translateString("update.button"), APM::getLanguage()->translateString("install.plugin.button"), APM::getLanguage()->translateString("remove.plugin.button"), APM::getLanguage()->translateString("list.plugin.button")] as $name) {
             $buttons[] = new MenuOption($name);
         }
 
@@ -46,6 +45,11 @@ class MenuForm
                     break;
                 case 5:
                     $player->sendForm(RepoForm::getRemovePluginForm());
+                    break;
+                case 6:
+                    foreach (APM::$reposPluginsCache as $plugin) {
+                        $player->sendMessage($plugin["name"]);
+                    }
                     break;
             }
         });

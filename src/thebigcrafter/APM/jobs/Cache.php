@@ -24,6 +24,7 @@ class Cache
             $info = json_decode(Internet::getURL($url . "Release.json")->getBody(), true);
 
             APM::$reposInfoCache[] = [
+                "repo" => $url,
                 "label" => $info["label"],
                 "suite" => $info["suite"],
                 "description" => $info["description"],
