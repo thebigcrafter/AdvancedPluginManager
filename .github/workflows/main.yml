@@ -21,6 +21,15 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
 
+      - name: Create vendor directory
+        run:
+          mkdir vendor
+      
+      - name: Download pmforms
+        uses: wei/wget@v1
+        with:
+          args: -O vendor/pmforms.phar https://poggit.pmmp.io/r/149990/pmforms_dev-12.phar
+
       - name: Install PHPStan Composer dependencies
         run: composer install --prefer-dist --no-interaction --ignore-platform-reqs
 

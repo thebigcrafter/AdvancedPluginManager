@@ -5,3 +5,5 @@ parameters:
 	excludePaths:
 		analyse:
 			- src/thebigcrafter/APM/error
+	scanDirectories:
+		- phar://vendor/pmforms.phar/src/
