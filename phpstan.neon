@@ -6,6 +6,6 @@ parameters:
 		analyse:
 			- src/thebigcrafter/APM/error
 	scanDirectories:
-		- phar:///source/vendor/pmforms.phar/src/
+		- phar:///vendor/pmforms.phar/src/
 	excludes_analyse:
 		- source/vendor
