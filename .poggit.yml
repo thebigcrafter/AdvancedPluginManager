@@ -2,7 +2,7 @@
 build-by-default: true
 branches:
 - main
-- pm-4
+- fix-phpstan
 projects:
   AdvancedPluginManager:
     path: ""
@@ -10,7 +10,8 @@ projects:
     - src: dktapps-pm-pl/pmforms/pmforms
       version: ^2.0.0
     - src: CortexPE/Commando/Commando
-      version: ^2.1.1
+      version: ^3.0.0
+      branch: PM4
     - src: MintoD/libMCUnicodeChars/libMCUnicodeChars
       version: ^1.1.0
     lint:
