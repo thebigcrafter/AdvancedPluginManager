@@ -29,7 +29,7 @@ class AddRepoCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getAddingForm()); // @phpstan-ignore-line
+            $sender->sendForm(RepoForm::getAddingForm());
         } else {
             if (!isset($args["url"])) {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);

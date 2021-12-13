@@ -26,7 +26,7 @@ class RepoForm
         return new CustomForm(APM::getLanguage()->translateString("add.repo.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("add.repo.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
-            if ($res->getString("pluginName") === null) {
+            if (empty($res->getString("pluginName"))) {
                 return;
             }
 
@@ -48,7 +48,7 @@ class RepoForm
         return new CustomForm(APM::getLanguage()->translateString("remove.repo.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("remove.repo.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
-            if ($res->getString("pluginName") === null) {
+            if (empty($res->getString("pluginName"))) {
                 return;
             }
 
@@ -72,7 +72,7 @@ class RepoForm
         $repositoriesList = "";
         foreach (APM::$reposInfoCache as $cache) {
             foreach (APM::getInstance()->repos->get("repositories") as $repo) {
-                if ($cache["repo"] == $repo) {
+                if ($cache["repo"] === $repo) {
                     $repositoriesList = $repositoriesList . "Name: " . $cache["label"] . "\n" . "Description: " . $cache["description"] . "\n" . "Repository URL: " . $repo . "\n\n";
                 }
             }
@@ -90,7 +90,7 @@ class RepoForm
         return new CustomForm(APM::getLanguage()->translateString("install.plugin.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("install.plugin.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
-            if ($res->getString("pluginName") === null) {
+            if (empty($res->getString("pluginName"))) {
                 return;
             }
 
@@ -111,7 +111,7 @@ class RepoForm
         return new CustomForm(APM::getLanguage()->translateString("remove.plugin.form.title"), [
             new Input("pluginName", APM::getLanguage()->translateString("remove.plugin.form.input"))
         ], function (Player $player, CustomFormResponse $res): void {
-            if ($res->getString("pluginName") === null) {
+            if (empty($res->getString("pluginName"))) {
                 return;
             }
 
