@@ -6,6 +6,7 @@ namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\args\RawStringArgument;
 use CortexPE\Commando\BaseSubCommand;
+use CortexPE\Commando\exception\ArgumentOrderException;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use thebigcrafter\APM\forms\RepoForm;
@@ -16,7 +17,7 @@ use thebigcrafter\APM\error\ErrorHandler;
 class InstallPluginCommand extends BaseSubCommand
 {
     /**
-     * @throws \CortexPE\Commando\exception\ArgumentOrderException
+     * @throws ArgumentOrderException
      */
     protected function prepare(): void
     {

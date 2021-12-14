@@ -9,9 +9,9 @@ class Cache
 {
     /**
      * Cache repositories information
-     * 
+     *
      * @param string[] $urls
-     * 
+     *
      * @return void
      */
     public static function cacheReposInfo(array $urls): void
@@ -34,9 +34,9 @@ class Cache
 
     /**
      * Cache repositories plugins
-     * 
+     *
      * @param string[] $urls
-     * 
+     *
      * @return void
      */
     public static function cacheReposPlugins(array $urls): void

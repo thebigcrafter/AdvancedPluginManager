@@ -10,6 +10,13 @@ use thebigcrafter\APM\APM;
 
 class ListPluginCommand extends BaseSubCommand
 {
+    /**
+     * @param CommandSender $sender
+     * @param string $aliasUsed
+     * @param array<string> $args
+     *
+     * @return void
+     */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         foreach (APM::$reposPluginsCache as $plugin) {

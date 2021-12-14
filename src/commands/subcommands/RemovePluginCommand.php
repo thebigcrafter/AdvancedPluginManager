@@ -6,6 +6,7 @@ namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\args\RawStringArgument;
 use CortexPE\Commando\BaseSubCommand;
+use CortexPE\Commando\exception\ArgumentOrderException;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
@@ -16,7 +17,7 @@ use thebigcrafter\APM\jobs\Remover;
 class RemovePluginCommand extends BaseSubCommand
 {
     /**
-     * @throws \CortexPE\Commando\exception\ArgumentOrderException
+     * @throws ArgumentOrderException
      */
     protected function prepare(): void
     {
