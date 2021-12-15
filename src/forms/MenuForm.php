@@ -19,7 +19,15 @@ class MenuForm
     {
         $buttons = [];
 
-        foreach ([APM::getLanguage()->translateString("add.repo.button"), APM::getLanguage()->translateString("remove.repo.button"), APM::getLanguage()->translateString("list.repo.button"), APM::getLanguage()->translateString("update.button"), APM::getLanguage()->translateString("install.plugin.button"), APM::getLanguage()->translateString("remove.plugin.button"), APM::getLanguage()->translateString("list.plugin.button")] as $name) {
+        foreach ([
+            APM::getLanguage()->translateString("add.repo.button"),
+            APM::getLanguage()->translateString("remove.repo.button"),
+            APM::getLanguage()->translateString("list.repo.button"),
+            APM::getLanguage()->translateString("update.button"),
+            APM::getLanguage()->translateString("install.plugin.button"),
+            APM::getLanguage()->translateString("remove.plugin.button"),
+            APM::getLanguage()->translateString("list.plugin.button")
+        ] as $name) {
             $buttons[] = new MenuOption($name);
         }
 

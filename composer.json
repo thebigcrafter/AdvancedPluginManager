@@ -25,7 +25,20 @@
     "authors": [
         {
             "name": "MintoD",
-            "email": "tobythedev7@outlook.com"
+            "email": "tobythedev7@outlook.com",
+            "homepage": "https://github.com/MintoD",
+            "role": "Collaborator"
+        },
+        {
+            "name": "Mcbeany",
+            "homepage": "https://github.com/Mcbeany",
+            "role": "Contributor"
+        },
+        {
+            "name": "NhanAZ",
+            "email": "nhanaz@pm.me",
+            "homepage": "https://github.com/NhanAZ",
+            "role": "Contributor"
         }
     ],
     "repositories": [
