@@ -1,4 +1,5 @@
 [![PoggitCI](https://poggit.pmmp.io/ci.shield/thebigcrafter/AdvancedPluginManager/~)](https://github.com/thebigcrafter/AdvancedPluginManager)[![PHPStan](https://github.com/thebigcrafter/AdvancedPluginManager/actions/workflows/main.yml/badge.svg)](https://github.com/thebigcrafter/AdvancedPluginManager/actions/workflows/main.yml)
+[![Codiga](https://api.codiga.io/project/30510/score/svg)](https://github.com/thebigcrafter/AdvancedPluginManager)
 [![License](https://img.shields.io/github/license/thebigcrafter/AdvancedPluginManager)](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/912857752383139880)](https://discord.gg/pdUvA8nXJC)
 
