@@ -21,10 +21,10 @@ class ListRepoCommand extends BaseSubCommand
      */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
+        $repositoriesList = "";
         if ($sender instanceof Player) {
             $sender->sendForm(ListRepoForm::get());
         } else {
-            $repositoriesList = "";
             foreach (APM::getInstance()->repos->get("repositories") as $repo) {
                 $repositoriesList = $repositoriesList . $repo . "\n";
             }
