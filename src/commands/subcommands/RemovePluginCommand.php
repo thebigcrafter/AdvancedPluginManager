@@ -11,6 +11,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
+use thebigcrafter\APM\forms\RemovePluginForm;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Remover;
 
@@ -34,7 +35,7 @@ class RemovePluginCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getRemovePluginForm());
+            $sender->sendForm(RemovePluginForm::get());
         } else {
             if (Remover::removePlugin((string) $args["plugin name"])) {
                 $sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"));

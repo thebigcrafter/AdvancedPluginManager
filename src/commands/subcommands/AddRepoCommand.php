@@ -12,6 +12,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
+use thebigcrafter\APM\forms\AddRepoForm;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Adder;
 
@@ -29,7 +30,7 @@ class AddRepoCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getAddingForm());
+            $sender->sendForm(AddRepoForm::get());
         } else {
             if (!isset($args["url"])) {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);

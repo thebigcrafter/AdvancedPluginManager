@@ -9,6 +9,7 @@ use CortexPE\Commando\BaseSubCommand;
 use CortexPE\Commando\exception\ArgumentOrderException;
 use JsonException;
 use thebigcrafter\APM\APM;
+use thebigcrafter\APM\forms\RemoveRepoForm;
 use thebigcrafter\APM\forms\RepoForm;
 use thebigcrafter\APM\jobs\Remover;
 use pocketmine\command\CommandSender;
@@ -27,7 +28,7 @@ class RemoveRepoCommand extends BaseSubCommand
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if ($sender instanceof Player) {
-            $sender->sendForm(RepoForm::getRemoveRepoForm());
+            $sender->sendForm(RemoveRepoForm::get());
         } else {
             if (!isset($args["url"])) {
                 ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);

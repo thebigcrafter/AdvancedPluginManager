@@ -37,7 +37,6 @@ class Remover
      */
     public static function removePlugin(string $name): bool
     {
-        print_r(APM::$loadedPlugins);
         $result = false;
 
         foreach (APM::$loadedPlugins as $plugin) {
