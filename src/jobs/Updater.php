@@ -13,4 +13,9 @@ class Updater
         APM::getInstance()->cacheRepo();
         Cache::cacheLoadedPlugins();
     }
+
+    public static function updatePlugin(string $plugin): bool
+    {
+        return Installer::install($plugin);
+    }
 }
