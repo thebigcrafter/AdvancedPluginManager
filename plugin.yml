@@ -1,7 +1,7 @@
 name: AdvancedPluginManager
 author: thebigcrafter
 description: A plugin manager for PocketMine-MP
-version: 1.0.0-alpha5
+version: 1.0.0-beta
 api: 4.0.0
 main: thebigcrafter\APM\APM
 src-namespace-prefix: thebigcrafter\APM
