@@ -6,4 +6,4 @@ parameters:
 		analyse:
 			- src/thebigcrafter/APM/error
 	scanDirectories:
-		- phar://vendor/pmforms.phar/src/
+		- vendor/dktapps/pmforms/src
