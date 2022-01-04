@@ -11,7 +11,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use thebigcrafter\APM\forms\InstallPluginForm;
 use thebigcrafter\APM\forms\RepoForm;
-use thebigcrafter\APM\jobs\Installer;
+use thebigcrafter\APM\tasks\Installer;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
 

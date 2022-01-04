@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace thebigcrafter\APM\jobs;
+namespace thebigcrafter\APM\tasks;
 
 use pocketmine\utils\Internet;
 use thebigcrafter\APM\APM;

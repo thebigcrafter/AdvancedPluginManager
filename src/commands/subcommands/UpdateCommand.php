@@ -7,7 +7,7 @@ namespace thebigcrafter\APM\commands\subcommands;
 use CortexPE\Commando\BaseSubCommand;
 use pocketmine\command\CommandSender;
 use thebigcrafter\APM\APM;
-use thebigcrafter\APM\jobs\Updater;
+use thebigcrafter\APM\tasks\Updater;
 
 class UpdateCommand extends BaseSubCommand
 {

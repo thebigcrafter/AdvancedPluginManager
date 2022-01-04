@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace thebigcrafter\APM\jobs;
+namespace thebigcrafter\APM\tasks;
 
 use thebigcrafter\APM\APM;
 

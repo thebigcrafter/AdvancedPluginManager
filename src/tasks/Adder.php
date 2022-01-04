@@ -1,6 +1,6 @@
 <?php
 
-namespace thebigcrafter\APM\jobs;
+namespace thebigcrafter\APM\tasks;
 
 use JsonException;
 use thebigcrafter\APM\APM;

@@ -14,7 +14,7 @@ use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\forms\AddRepoForm;
 use thebigcrafter\APM\forms\RepoForm;
-use thebigcrafter\APM\jobs\Adder;
+use thebigcrafter\APM\tasks\Adder;
 
 class AddRepoCommand extends BaseSubCommand
 {

@@ -10,7 +10,7 @@ use dktapps\pmforms\element\Input;
 use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
-use thebigcrafter\APM\jobs\Remover;
+use thebigcrafter\APM\tasks\Remover;
 
 class RemovePluginForm {
     public static function get(): CustomForm {

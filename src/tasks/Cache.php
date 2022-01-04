@@ -1,6 +1,6 @@
 <?php
 
-namespace thebigcrafter\APM\jobs;
+namespace thebigcrafter\APM\tasks;
 
 use pocketmine\utils\Internet;
 use thebigcrafter\APM\APM;

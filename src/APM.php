@@ -9,7 +9,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\SingletonTrait;
 use thebigcrafter\APM\commands\APMCommand;
-use thebigcrafter\APM\jobs\Cache;
+use thebigcrafter\APM\tasks\Cache;
 
 class APM extends PluginBase
 {

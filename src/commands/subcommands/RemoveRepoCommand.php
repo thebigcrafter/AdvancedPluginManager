@@ -11,7 +11,7 @@ use JsonException;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\forms\RemoveRepoForm;
 use thebigcrafter\APM\forms\RepoForm;
-use thebigcrafter\APM\jobs\Remover;
+use thebigcrafter\APM\tasks\Remover;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use thebigcrafter\APM\error\ErrorHandler;

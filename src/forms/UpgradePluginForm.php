@@ -10,7 +10,7 @@ use dktapps\pmforms\element\Input;
 use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
-use thebigcrafter\APM\jobs\Updater;
+use thebigcrafter\APM\tasks\Updater;
 
 class UpgradePluginForm {
     /**
