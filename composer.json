@@ -19,8 +19,8 @@
         }
     },
     "scripts": {
-        "fix-src": "./vendor/bin/php-cs-fixer fix src/",
-        "analyse-src": "./vendor/bin/phpstan analyse -c phpstan.neon"
+        "fix-cs": "./vendor/bin/php-cs-fixer fix src/",
+        "analyse": "./vendor/bin/phpstan analyse -c phpstan.neon"
     },
     "authors": [
         {
