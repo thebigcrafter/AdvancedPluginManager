@@ -4,9 +4,11 @@
 [![License](https://img.shields.io/github/license/thebigcrafter/AdvancedPluginManager)](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/912857752383139880)](https://discord.gg/pdUvA8nXJC)
 
-# AdvancedPluginManager
+# Advanced Plugin Manager
 
-AdvancedPluginManager (APM) is an open-source, powerful plugin manager for PocketMine servers and developed by [thebigcrafter](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE).
+Advanced Plugin Manager (APM) is a powerful, open source plugin manager inspired by [APT](https://en.wikipedia.org/wiki/APT_(software)) (Advanced Package Tool) in Debian-based Linux distributions for PocketMine-MP and developed by thebigcrafter.
+
+*For more information, please visit [wiki.](https://github.com/thebigcrafter/AdvancedPluginManager/wiki)*
 
 # Installation
 

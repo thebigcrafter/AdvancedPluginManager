@@ -2,10 +2,10 @@
 build-by-default: true
 branches:
 - main
-- fix-phpstan
 projects:
   AdvancedPluginManager:
     path: ""
+    icon: assets/icon.jpg
     libs:
     - src: dktapps-pm-pl/pmforms/pmforms
       version: ^2.0.0
