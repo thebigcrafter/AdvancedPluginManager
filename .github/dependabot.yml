@@ -6,5 +6,4 @@ updates:
     schedule:
       interval: daily
       time: "07:00"
-      time_zone: "Asia/Bangkok"
     open-pull-requests-limit: 10
