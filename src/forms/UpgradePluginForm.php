@@ -13,22 +13,20 @@ use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\tasks\Updater;
 
 class UpgradePluginForm {
-    /**
-     * @return CustomForm
-     */
-    public static function get(): CustomForm {
-        return new CustomForm(APM::getLanguage()->translateString("upgrade.plugin.form.title"), [
-            new Input("pluginName", APM::getLanguage()->translateString("upgrade.plugin.form.input"))
-        ], function (Player $player, CustomFormResponse $res): void {
-            if (empty($res->getString("pluginName"))) {
-                return;
-            }
 
-            if (Updater::updatePlugin($res->getString("pluginName"))) {
-                $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("upgrade.plugin.success"));
-            } else {
-                ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
-            }
-        });
-    }
+	public static function get(): CustomForm {
+		return new CustomForm(APM::getLanguage()->translateString("upgrade.plugin.form.title"), [
+			new Input("pluginName", APM::getLanguage()->translateString("upgrade.plugin.form.input"))
+		], function (Player $player, CustomFormResponse $res): void {
+			if (empty($res->getString("pluginName"))) {
+				return;
+			}
+
+			if (Updater::updatePlugin($res->getString("pluginName"))) {
+				$player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("upgrade.plugin.success"));
+			} else {
+				ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
+			}
+		});
+	}
 }

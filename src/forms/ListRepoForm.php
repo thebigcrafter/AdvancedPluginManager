@@ -11,18 +11,16 @@ use pocketmine\player\Player;
 use thebigcrafter\APM\APM;
 
 class ListRepoForm {
-    /**
-     * @return CustomForm
-     */
-    public static function get(): CustomForm {
-        $labels = [];
 
-        foreach (APM::$reposInfoCache as $repo) {
-            $labels[] = new Label($repo["repo"], $repo["label"] . "\n" . $repo["description"]);
-        }
+	public static function get(): CustomForm {
+		$labels = [];
 
-        return new CustomForm(APM::getLanguage()->translateString("list.repo.form.title"), $labels, function(Player $player, CustomFormResponse $res): void {
-            return;
-        });
-    }
+		foreach (APM::$reposInfoCache as $repo) {
+			$labels[] = new Label($repo["repo"], $repo["label"] . "\n" . $repo["description"]);
+		}
+
+		return new CustomForm(APM::getLanguage()->translateString("list.repo.form.title"), $labels, function(Player $player, CustomFormResponse $res): void {
+			return;
+		});
+	}
 }

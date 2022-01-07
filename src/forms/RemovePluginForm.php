@@ -13,19 +13,19 @@ use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\tasks\Remover;
 
 class RemovePluginForm {
-    public static function get(): CustomForm {
-        return new CustomForm(APM::getLanguage()->translateString("remove.plugin.form.title"), [
-            new Input("pluginName", APM::getLanguage()->translateString("remove.plugin.form.input"))
-        ], function (Player $player, CustomFormResponse $res): void {
-            if (empty($res->getString("pluginName"))) {
-                return;
-            }
+	public static function get(): CustomForm {
+		return new CustomForm(APM::getLanguage()->translateString("remove.plugin.form.title"), [
+			new Input("pluginName", APM::getLanguage()->translateString("remove.plugin.form.input"))
+		], function (Player $player, CustomFormResponse $res): void {
+			if (empty($res->getString("pluginName"))) {
+				return;
+			}
 
-            if (Remover::removePlugin($res->getString("pluginName"))) {
-                $player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"));
-            } else {
-                ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
-            }
-        });
-    }
+			if (Remover::removePlugin($res->getString("pluginName"))) {
+				$player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"));
+			} else {
+				ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
+			}
+		});
+	}
 }

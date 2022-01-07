@@ -12,27 +12,23 @@ use thebigcrafter\APM\forms\ListRepoForm;
 
 class ListRepoCommand extends BaseSubCommand
 {
-    /**
-     * @param CommandSender $sender
-     * @param string $aliasUsed
-     * @param array<string> $args
-     *
-     * @return void
-     */
-    public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
-    {
-        $repositoriesList = "";
-        if ($sender instanceof Player) {
-            $sender->sendForm(ListRepoForm::get());
-        } else {
-            foreach (APM::getInstance()->repos->get("repositories") as $repo) {
-                $repositoriesList = $repositoriesList . $repo . "\n";
-            }
-        }
-        $sender->sendMessage($repositoriesList);
-    }
+	/**
+	 * @param array<string> $args
+	 */
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
+	{
+		$repositoriesList = "";
+		if ($sender instanceof Player) {
+			$sender->sendForm(ListRepoForm::get());
+		} else {
+			foreach (APM::getInstance()->repos->get("repositories") as $repo) {
+				$repositoriesList = $repositoriesList . $repo . "\n";
+			}
+		}
+		$sender->sendMessage($repositoriesList);
+	}
 
-    protected function prepare(): void
-    {
-    }
+	protected function prepare(): void
+	{
+	}
 }
