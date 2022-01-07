@@ -17,7 +17,7 @@ class Cache
 	public static function cacheReposInfo(array $urls): void
 	{
 		foreach ($urls as $url) {
-			if (Internet::getURL($url . "Release.json")->getCode() != 200) {
+			if (empty(Internet::getURL($url . "Release.json")) || Internet::getURL($url . "Release.json")->getCode() != 200) {
 				return;
 			}
 
@@ -26,7 +26,6 @@ class Cache
 			APM::$reposInfoCache[] = [
 				"repo" => $url,
 				"label" => $info["label"],
-				"suite" => $info["suite"],
 				"description" => $info["description"],
 			];
 		}
@@ -40,7 +39,7 @@ class Cache
 	public static function cacheReposPlugins(array $urls): void
 	{
 		foreach ($urls as $url) {
-			if (Internet::getURL($url . "Plugins.json")->getCode() != 200) {
+			if (empty(Internet::getURL($url . "Plugins.json")) || Internet::getURL($url . "Plugins.json")->getCode() != 200) {
 				return;
 			}
 
@@ -59,22 +58,6 @@ class Cache
 					"sha256" => $plugin["sha256"],
 					"sha512" => $plugin["sha512"],
 				];
-			}
-		}
-	}
-
-	/**
-	 * Cache loaded plugins
-	 */
-	public static function cacheLoadedPlugins(): void
-	{
-		foreach (APM::getInstance()->getServer()->getPluginManager()->getPlugins() as $plugin) {
-			$files = array_diff(scandir(APM::getInstance()->getServer()->getDataPath() . "plugins/"), [".", ".."]);
-
-			foreach ($files as $file) {
-				if (str_contains($file, $plugin->getName()) && str_ends_with($file, ".phar") === true) {
-					APM::$loadedPlugins[] = ["name" => $plugin->getName(), "path" => APM::getInstance()->getServer()->getDataPath() . "plugins/" . $file];
-				}
 			}
 		}
 	}

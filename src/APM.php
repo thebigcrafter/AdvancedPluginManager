@@ -15,9 +15,7 @@ class APM extends PluginBase
 {
 	use SingletonTrait;
 
-	/**
-	 * Prefix
-	 */
+	/** Prefix */
 	public static string $PREFIX = "§a[§bAPM§a]§r ";
 	/**
 	 * Plugins cache
@@ -31,23 +29,11 @@ class APM extends PluginBase
 	 * @var array<array<string, string>>
 	 */
 	public static array $reposInfoCache = [];
-	/**
-	 * Loaded plugins list
-	 *
-	 * @var array<array<string, string>>
-	 */
-	public static array $loadedPlugins = [];
-	/**
-	 * Language
-	 */
+	/** Language */
 	private static Language $language;
-	/**
-	 * Repositories list
-	 */
+	/** Repositories list */
 	public Config $repos;
-	/**
-	 * Plugin configurations
-	 */
+	/** Plugin configurations */
 	public Config $config;
 	/**
 	 * Language FILE name
@@ -55,9 +41,7 @@ class APM extends PluginBase
 	 * @var array<string>
 	 */
 	private array $languages = ["eng", "vie"];
-	/**
-	 * Default repository
-	 */
+	/** Default repository */
 	private string $defaultRepo = "https://thebigcrafter.github.io/";
 
 	public static function getInstance(): self
@@ -80,7 +64,6 @@ class APM extends PluginBase
 
 		$this->initLanguageFiles($this->config->get("language"), $this->languages);
 		$this->cacheRepo();
-		Cache::cacheLoadedPlugins();
 
 		$this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced Plugin Manager"));
 	}

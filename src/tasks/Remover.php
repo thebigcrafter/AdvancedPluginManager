@@ -34,12 +34,11 @@ class Remover
 	{
 		$result = false;
 
-		foreach (APM::$loadedPlugins as $plugin) {
-			if ($name == $plugin["name"]) {
-				unlink($plugin["path"]);
-				$result = true;
-			}
+		if(file_exists(APM::getInstance()->getServer()->getDataPath() . "plugins/" . $name . ".phar")) {
+			unlink(APM::getInstance()->getServer()->getDataPath() . "plugins/" . $name . ".phar");
+			$result = true;
 		}
+
 		return $result;
 	}
 }
