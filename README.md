@@ -2,7 +2,7 @@
 [![PHPStan](https://github.com/thebigcrafter/AdvancedPluginManager/actions/workflows/phpstan-analysis.yml/badge.svg)](https://github.com/thebigcrafter/AdvancedPluginManager/actions/workflows/phpstan-analysis.yml)
 [![Codiga](https://api.codiga.io/project/30510/score/svg)](https://github.com/thebigcrafter/AdvancedPluginManager)
 [![License](https://img.shields.io/github/license/thebigcrafter/AdvancedPluginManager)](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE)
-[![Discord](https://img.shields.io/discord/912857752383139880)](https://discord.gg/pdUvA8nXJC)
+[![Discord](https://img.shields.io/badge/chat-on%20discord-blue)](https://discord.gg/pdUvA8nXJC)
 
 # Advanced Plugin Manager
 
