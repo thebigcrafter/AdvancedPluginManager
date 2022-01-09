@@ -19,7 +19,7 @@
         }
     },
     "scripts": {
-        "fix-cs": "./vendor/bin/php-cs-fixer fix src/",
+        "fix-cs": "./vendor/bin/php-cs-fixer fix",
         "analyse": "./vendor/bin/phpstan analyse -c phpstan.neon.dist"
     },
     "authors": [
