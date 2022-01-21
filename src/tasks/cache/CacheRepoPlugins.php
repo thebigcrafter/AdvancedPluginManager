@@ -2,43 +2,31 @@
 
 declare(strict_types=1);
 
-namespace thebigcrafter\APM\tasks;
+namespace thebigcrafter\APM\tasks\cache;
 
+use pocketmine\scheduler\Task;
 use pocketmine\utils\Internet;
 use thebigcrafter\APM\APM;
 
-class Cache
+class CacheRepoPlugins extends Task
 {
+	/** @var string[] $urls */
+	private array $urls;
+
+	/** @var array<array<string, string>> $repoPlugins */
+	private array $repoPlugins = [];
+
 	/**
-	 * Cache repositories information
-	 *
 	 * @param string[] $urls
 	 */
-	public static function cacheReposInfo(array $urls): void
+	public function __construct(array $urls)
 	{
-		foreach ($urls as $url) {
-			if (empty(Internet::getURL($url . "Release.json")) || Internet::getURL($url . "Release.json")->getCode() != 200) {
-				return;
-			}
-
-			$info = json_decode(Internet::getURL($url . "Release.json")->getBody(), true);
-
-			APM::$reposInfoCache[] = [
-				"repo" => $url,
-				"label" => $info["label"],
-				"description" => $info["description"],
-			];
-		}
+		$this->urls = $urls;
 	}
 
-	/**
-	 * Cache repositories plugins
-	 *
-	 * @param string[] $urls
-	 */
-	public static function cacheReposPlugins(array $urls): void
+	public function onRun(): void
 	{
-		foreach ($urls as $url) {
+		foreach ($this->urls as $url) {
 			if (empty(Internet::getURL($url . "Plugins.json")) || Internet::getURL($url . "Plugins.json")->getCode() != 200) {
 				return;
 			}
@@ -46,7 +34,7 @@ class Cache
 			$data = json_decode(Internet::getURL($url . "Plugins.json")->getBody(), true);
 
 			foreach ($data as $plugin) {
-				APM::$reposPluginsCache[] = [
+				$this->repoPlugins[] = [
 					"plugin" => $plugin["plugin"],
 					"name" => $plugin["name"],
 					"author" => $plugin["author"],
@@ -60,5 +48,7 @@ class Cache
 				];
 			}
 		}
+
+		APM::$reposPluginsCache = $this->repoPlugins;
 	}
 }
