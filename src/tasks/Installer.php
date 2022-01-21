@@ -47,6 +47,7 @@ class Installer
 		if ($hash["md5"] === md5_file($filePath) && $hash["sha1"] === sha1_file($filePath) && $hash["sha256"] === hash_file("sha256", $filePath) && $hash["sha512"] === hash_file("sha512", $filePath)) {
 			return true;
 		} else {
+			unlink($filePath);
 			return false;
 		}
 	}

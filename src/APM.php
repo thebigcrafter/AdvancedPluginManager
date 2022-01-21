@@ -9,7 +9,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\SingletonTrait;
 use thebigcrafter\APM\commands\APMCommand;
-use thebigcrafter\APM\tasks\Cache;
+use thebigcrafter\APM\tasks\cache\CacheRepoInfo;
+use thebigcrafter\APM\tasks\cache\CacheRepoPlugins;
 
 class APM extends PluginBase
 {
@@ -95,7 +96,7 @@ class APM extends PluginBase
 	{
 		$this->reloadConfig();
 
-		Cache::cacheReposInfo($this->repos->get("repositories"));
-		Cache::cacheReposPlugins($this->repos->get("repositories"));
+		$this->getScheduler()->scheduleTask(new CacheRepoInfo($this->repos->get("repositories")));
+		$this->getScheduler()->scheduleTask(new CacheRepoPlugins($this->repos->get("repositories")));
 	}
 }
