@@ -4,13 +4,13 @@
     "type": "project",
     "require": {
         "php": "^8.0",
-        "pocketmine/pocketmine-mp": "^4.0",
         "cortexpe/commando": "dev-PM4",
         "dktapps/pmforms": "dev-master"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.2",
-        "friendsofphp/php-cs-fixer": "^3.3"
+        "friendsofphp/php-cs-fixer": "^3.3",
+        "pocketmine/pocketmine-mp": "^4.0"
     },
     "license": "GPL-3.0-only",
     "autoload": {
