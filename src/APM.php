@@ -18,30 +18,37 @@ class APM extends PluginBase
 
 	/** Prefix */
 	public static string $PREFIX = "§a[§bAPM§a]§r ";
+
 	/**
 	 * Plugins cache
 	 *
 	 * @var array<array<string, string|int>>
 	 */
 	public static array $reposPluginsCache = [];
+
 	/**
 	 * Repositories information cache
 	 *
 	 * @var array<array<string, string>>
 	 */
 	public static array $reposInfoCache = [];
+
 	/** Language */
 	private static Language $language;
+
 	/** Repositories list */
 	public Config $repos;
+
 	/** Plugin configurations */
 	public Config $config;
+
 	/**
 	 * Language FILE name
 	 *
 	 * @var array<string>
 	 */
 	private array $languages = ["eng", "vie", "ind"];
+
 	/** Default repository */
 	private string $defaultRepo = "https://thebigcrafter.github.io/";
 
