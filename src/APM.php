@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace thebigcrafter\APM;
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use pocketmine\lang\Language;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
