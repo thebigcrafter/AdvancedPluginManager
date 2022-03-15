@@ -6,6 +6,7 @@ namespace thebigcrafter\APM\commands\subcommands;
 
 use CortexPE\Commando\BaseSubCommand;
 use pocketmine\command\CommandSender;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\tasks\Updater;
 
@@ -20,8 +21,8 @@ class UpdateCommand extends BaseSubCommand
 	 */
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
 	{
-		$sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("start.update.message"));
+		$sender->sendMessage(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("start.update.message")));
 		Updater::updateRepo();
-		$sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("end.update.message"));
+		$sender->sendMessage(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("end.update.message")));
 	}
 }

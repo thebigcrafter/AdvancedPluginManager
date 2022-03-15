@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace thebigcrafter\APM\utils;
 
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 
 class Notifier
@@ -14,7 +15,7 @@ class Notifier
 	 */
 	public static function error(Player $player, string $message): void
 	{
-		$player->sendMessage(APM::$PREFIX . "§4" . $message);
+		$player->sendMessage(TextFormat::colorize(APM::$PREFIX . TextFormat::DARK_RED . $message));
 	}
 
 	/**
@@ -22,7 +23,7 @@ class Notifier
 	 */
 	public static function success(Player $player, string $message): void
 	{
-		$player->sendMessage(APM::$PREFIX . "§a" . $message);
+		$player->sendMessage(TextFormat::colorize(APM::$PREFIX . TextFormat::GREEN . $message));
 	}
 
 	/**
@@ -30,6 +31,6 @@ class Notifier
 	 */
 	public static function warn(Player $player, string $message): void
 	{
-		$player->sendMessage(APM::$PREFIX . "§e" . $message);
+		$player->sendMessage(TextFormat::colorize(APM::$PREFIX . TextFormat::YELLOW . $message));
 	}
 }

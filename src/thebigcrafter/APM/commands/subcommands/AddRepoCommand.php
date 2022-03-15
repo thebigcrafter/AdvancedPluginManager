@@ -10,6 +10,7 @@ use CortexPE\Commando\exception\ArgumentOrderException;
 use JsonException;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\forms\AddRepoForm;
@@ -31,7 +32,7 @@ class AddRepoCommand extends BaseSubCommand
 				ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);
 			}
 			if (Adder::addRepo((string) $args["url"])) {
-				$sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("add.repo.success"));
+				$sender->sendMessage(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("add.repo.success")));
 			} else {
 				ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);
 			}

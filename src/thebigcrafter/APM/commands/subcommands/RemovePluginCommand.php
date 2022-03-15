@@ -9,6 +9,7 @@ use CortexPE\Commando\BaseSubCommand;
 use CortexPE\Commando\exception\ArgumentOrderException;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\forms\RemovePluginForm;
@@ -33,7 +34,7 @@ class RemovePluginCommand extends BaseSubCommand
 			$sender->sendForm(RemovePluginForm::get());
 		} else {
 			if (Remover::removePlugin((string) $args["plugin name"])) {
-				$sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"));
+				$sender->sendMessage(TextFormat::colorize(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"))));
 			} else {
 				ErrorHandler::sendErrorToConsole(ErrorHandler::$PLUGIN_NOT_FOUND);
 			}

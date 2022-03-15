@@ -19,7 +19,7 @@ class APM extends PluginBase
 	use SingletonTrait;
 
 	/** Prefix */
-	public static string $PREFIX = "§a[§bAPM§a]§r ";
+	public static string $PREFIX = "&a[&bAPM&a]&r ";
 
 	/**
 	 * Plugins cache

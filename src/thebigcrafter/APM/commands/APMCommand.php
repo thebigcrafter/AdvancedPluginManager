@@ -7,6 +7,7 @@ namespace thebigcrafter\APM\commands;
 use CortexPE\Commando\BaseCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\commands\subcommands\AddRepoCommand;
 use thebigcrafter\APM\commands\subcommands\InstallPluginCommand;
@@ -34,15 +35,15 @@ class APMCommand extends BaseCommand
 	protected function prepare(): void
 	{
 		$subCommands = [
-			new AddRepoCommand("add-repo", APM::getLanguage()->translateString("add.repo.command.description")),
-			new RemoveRepoCommand("remove-repo", APM::getLanguage()->translateString("remove.repo.command.description")),
-			new ListRepoCommand("list-repo", APM::getLanguage()->translateString("list.repo.command.description")),
-			new UpdateCommand("update", APM::getLanguage()->translateString("update.command.description")),
-			new InstallPluginCommand("install", APM::getLanguage()->translateString("install.plugin.form.title")),
-			new RemovePluginCommand("remove", APM::getLanguage()->translateString("remove.command.description")),
-			new ListPluginCommand("list", APM::getLanguage()->translateString("list.command.description")),
+			new AddRepoCommand("add-repo", TextFormat::colorize(APM::getLanguage()->translateString("add.repo.command.description"))),
+			new RemoveRepoCommand("remove-repo", TextFormat::colorize(APM::getLanguage()->translateString("remove.repo.command.description"))),
+			new ListRepoCommand("list-repo", TextFormat::colorize(APM::getLanguage()->translateString("list.repo.command.description"))),
+			new UpdateCommand("update", TextFormat::colorize(APM::getLanguage()->translateString("update.command.description"))),
+			new InstallPluginCommand("install", TextFormat::colorize(APM::getLanguage()->translateString("install.plugin.form.title"))),
+			new RemovePluginCommand("remove", TextFormat::colorize(APM::getLanguage()->translateString("remove.command.description"))),
+			new ListPluginCommand("list", TextFormat::colorize(APM::getLanguage()->translateString("list.command.description"))),
 		];
-		$this->setDescription(APM::getLanguage()->translateString("apm.command.description"));
+		$this->setDescription(TextFormat::colorize(APM::getLanguage()->translateString("apm.command.description")));
 		$this->setPermission("apm.cmd");
 
 		foreach ($subCommands as $subCommand) {

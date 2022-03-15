@@ -40,6 +40,6 @@ class ErrorHandler
 	 */
 	public static function sendErrorToConsole(int $errorCode): void
 	{
-		APM::getInstance()->getLogger()->error(APM::$PREFIX . TextFormat::DARK_RED . self::getErrorMessage($errorCode));
+		APM::getInstance()->getLogger()->error(TextFormat::colorize(APM::$PREFIX . TextFormat::DARK_RED . self::getErrorMessage($errorCode)));
 	}
 }

@@ -8,6 +8,7 @@ use dktapps\pmforms\CustomForm;
 use dktapps\pmforms\CustomFormResponse;
 use dktapps\pmforms\element\Label;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 
 class ListRepoForm {
@@ -19,7 +20,7 @@ class ListRepoForm {
 			$labels[] = new Label($repo["repo"], $repo["label"] . "\n" . $repo["description"]);
 		}
 
-		return new CustomForm(APM::getLanguage()->translateString("list.repo.form.title"), $labels, function(Player $player, CustomFormResponse $res): void {
+		return new CustomForm(TextFormat::colorize(APM::getLanguage()->translateString("list.repo.form.title")), $labels, function(Player $player, CustomFormResponse $res): void {
 			return;
 		});
 	}

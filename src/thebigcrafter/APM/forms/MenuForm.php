@@ -6,6 +6,7 @@ namespace thebigcrafter\APM\forms;
 
 use dktapps\pmforms\MenuOption;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 
 class MenuForm
@@ -15,11 +16,11 @@ class MenuForm
 	{
 		$buttons = [];
 
-		foreach ([APM::getLanguage()->translateString("add.repo.button"), APM::getLanguage()->translateString("remove.repo.button"), APM::getLanguage()->translateString("list.repo.button"), APM::getLanguage()->translateString("update.button"), APM::getLanguage()->translateString("install.plugin.button"), APM::getLanguage()->translateString("remove.plugin.button"), APM::getLanguage()->translateString("list.plugin.button")] as $name) {
+		foreach ([TextFormat::colorize(APM::getLanguage()->translateString("add.repo.button")), TextFormat::colorize(APM::getLanguage()->translateString("remove.repo.button")), TextFormat::colorize(APM::getLanguage()->translateString("list.repo.button")), TextFormat::colorize(APM::getLanguage()->translateString("update.button")), TextFormat::colorize(APM::getLanguage()->translateString("install.plugin.button")), TextFormat::colorize(APM::getLanguage()->translateString("remove.plugin.button")), TextFormat::colorize(APM::getLanguage()->translateString("list.plugin.button"))] as $name) {
 			$buttons[] = new MenuOption($name);
 		}
 
-		return new \dktapps\pmforms\MenuForm(APM::getLanguage()->translateString("menu.form.title"), "", $buttons, function (Player $player, int $selected): void {
+		return new \dktapps\pmforms\MenuForm(TextFormat::colorize(APM::getLanguage()->translateString("menu.form.title")), "", $buttons, function (Player $player, int $selected): void {
 			switch ($selected) {
 				case 0:
 					$player->sendForm(AddRepoForm::get());
@@ -31,9 +32,9 @@ class MenuForm
 					$player->sendForm(ListRepoForm::get());
 					break;
 				case 3:
-					$player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("start.update.message"));
+					$player->sendMessage(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("start.update.message")));
 					APM::getInstance()->cacheRepo();
-					$player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("end.update.message"));
+					$player->sendMessage(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("end.update.message")));
 					break;
 				case 4:
 					$player->sendForm(InstallPluginForm::get());

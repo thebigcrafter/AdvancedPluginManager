@@ -8,21 +8,22 @@ use dktapps\pmforms\CustomForm;
 use dktapps\pmforms\CustomFormResponse;
 use dktapps\pmforms\element\Input;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\tasks\Remover;
 
 class RemovePluginForm {
 	public static function get(): CustomForm {
-		return new CustomForm(APM::getLanguage()->translateString("remove.plugin.form.title"), [
-			new Input("pluginName", APM::getLanguage()->translateString("remove.plugin.form.input"))
+		return new CustomForm(TextFormat::colorize(APM::getLanguage()->translateString("remove.plugin.form.title")), [
+			new Input("pluginName", TextFormat::colorize(APM::getLanguage()->translateString("remove.plugin.form.input")))
 		], function (Player $player, CustomFormResponse $res): void {
 			if (empty($res->getString("pluginName"))) {
 				return;
 			}
 
 			if (Remover::removePlugin($res->getString("pluginName"))) {
-				$player->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success"));
+				$player->sendMessage(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("remove.plugin.success")));
 			} else {
 				ErrorHandler::sendErrorToPlayer($player, ErrorHandler::$PLUGIN_NOT_FOUND);
 			}

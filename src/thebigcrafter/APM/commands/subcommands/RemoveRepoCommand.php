@@ -10,6 +10,7 @@ use CortexPE\Commando\exception\ArgumentOrderException;
 use JsonException;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use thebigcrafter\APM\APM;
 use thebigcrafter\APM\error\ErrorHandler;
 use thebigcrafter\APM\forms\RemoveRepoForm;
@@ -31,7 +32,7 @@ class RemoveRepoCommand extends BaseSubCommand
 				ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);
 			}
 			if (Remover::removeRepo((string) $args["url"])) {
-				$sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("remove.repo.success"));
+				$sender->sendMessage(TextFormat::colorize(APM::$PREFIX . APM::getLanguage()->translateString("remove.repo.success")));
 			} else {
 				ErrorHandler::sendErrorToConsole(ErrorHandler::$URL_NOT_FOUND);
 			}
