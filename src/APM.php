@@ -49,7 +49,7 @@ class APM extends PluginBase
 	 *
 	 * @var array<string>
 	 */
-	private array $languages = ["eng", "vie", "ind"];
+	private array $languages = ["eng", "vie", "ind", "rus", "ukr"];
 
 	/** Default repository */
 	private string $defaultRepo = "https://thebigcrafter.github.io/";
