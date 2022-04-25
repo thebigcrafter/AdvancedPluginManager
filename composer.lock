@@ -906,16 +906,16 @@
         },
         {
             "name": "pocketmine/bedrock-protocol",
-            "version": "9.0.0+bedrock-1.18.30",
+            "version": "9.0.1+bedrock-1.18.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/BedrockProtocol.git",
-                "reference": "76cf00af0070dbb3f63a3e7fe74039d011a5475e"
+                "reference": "9d3cc87c4d26c002dd42aa9af20c0cd47a72018e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/BedrockProtocol/zipball/76cf00af0070dbb3f63a3e7fe74039d011a5475e",
-                "reference": "76cf00af0070dbb3f63a3e7fe74039d011a5475e",
+                "url": "https://api.github.com/repos/pmmp/BedrockProtocol/zipball/9d3cc87c4d26c002dd42aa9af20c0cd47a72018e",
+                "reference": "9d3cc87c4d26c002dd42aa9af20c0cd47a72018e",
                 "shasum": ""
             },
             "require": {
@@ -929,7 +929,7 @@
                 "ramsey/uuid": "^4.1"
             },
             "require-dev": {
-                "phpstan/phpstan": "1.5.4",
+                "phpstan/phpstan": "1.5.7",
                 "phpstan/phpstan-phpunit": "^1.0.0",
                 "phpstan/phpstan-strict-rules": "^1.0.0",
                 "phpunit/phpunit": "^9.5"
@@ -947,9 +947,9 @@
             "description": "An implementation of the Minecraft: Bedrock Edition protocol in PHP",
             "support": {
                 "issues": "https://github.com/pmmp/BedrockProtocol/issues",
-                "source": "https://github.com/pmmp/BedrockProtocol/tree/9.0.0+bedrock-1.18.30"
+                "source": "https://github.com/pmmp/BedrockProtocol/tree/9.0.1+bedrock-1.18.30"
             },
-            "time": "2022-04-20T12:44:11+00:00"
+            "time": "2022-04-23T14:48:16+00:00"
         },
         {
             "name": "pocketmine/binaryutils",
@@ -1358,16 +1358,16 @@
         },
         {
             "name": "pocketmine/pocketmine-mp",
-            "version": "4.3.0",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/PocketMine-MP.git",
-                "reference": "e4ce467c0ba22e8e9f0300bd5d375a0728369813"
+                "reference": "f7dce4af8802ce28a8286e1c8002af19cf986c62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/e4ce467c0ba22e8e9f0300bd5d375a0728369813",
-                "reference": "e4ce467c0ba22e8e9f0300bd5d375a0728369813",
+                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/f7dce4af8802ce28a8286e1c8002af19cf986c62",
+                "reference": "f7dce4af8802ce28a8286e1c8002af19cf986c62",
                 "shasum": ""
             },
             "require": {
@@ -1419,7 +1419,7 @@
                 "webmozart/path-util": "^2.3"
             },
             "require-dev": {
-                "phpstan/phpstan": "1.5.6",
+                "phpstan/phpstan": "1.5.7",
                 "phpstan/phpstan-phpunit": "^1.1.0",
                 "phpstan/phpstan-strict-rules": "^1.0.0",
                 "phpunit/phpunit": "^9.2"
@@ -1441,7 +1441,7 @@
             "homepage": "https://pmmp.io",
             "support": {
                 "issues": "https://github.com/pmmp/PocketMine-MP/issues",
-                "source": "https://github.com/pmmp/PocketMine-MP/tree/4.3.0"
+                "source": "https://github.com/pmmp/PocketMine-MP/tree/4.3.1"
             },
             "funding": [
                 {
@@ -1453,7 +1453,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-04-20T13:15:06+00:00"
+            "time": "2022-04-23T15:03:14+00:00"
         },
         {
             "name": "pocketmine/raklib",
