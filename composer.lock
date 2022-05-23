@@ -1358,16 +1358,16 @@
         },
         {
             "name": "pocketmine/pocketmine-mp",
-            "version": "4.3.3",
+            "version": "4.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pmmp/PocketMine-MP.git",
-                "reference": "9dc2a01c2e2147b189175484bd39ef1002f6745c"
+                "reference": "7bbb2617c8b0af24ffd6df86041e487eed9fb889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/9dc2a01c2e2147b189175484bd39ef1002f6745c",
-                "reference": "9dc2a01c2e2147b189175484bd39ef1002f6745c",
+                "url": "https://api.github.com/repos/pmmp/PocketMine-MP/zipball/7bbb2617c8b0af24ffd6df86041e487eed9fb889",
+                "reference": "7bbb2617c8b0af24ffd6df86041e487eed9fb889",
                 "shasum": ""
             },
             "require": {
@@ -1441,7 +1441,7 @@
             "homepage": "https://pmmp.io",
             "support": {
                 "issues": "https://github.com/pmmp/PocketMine-MP/issues",
-                "source": "https://github.com/pmmp/PocketMine-MP/tree/4.3.3"
+                "source": "https://github.com/pmmp/PocketMine-MP/tree/4.3.4"
             },
             "funding": [
                 {
@@ -1453,7 +1453,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-16T16:50:29+00:00"
+            "time": "2022-05-22T15:12:12+00:00"
         },
         {
             "name": "pocketmine/raklib",
