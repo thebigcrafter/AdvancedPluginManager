@@ -1,0 +1,83 @@
+name: Check upstream compatibility
+
+on:
+  schedule:
+    - cron: "37 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      fail_on_update:
+        description: Fail when a newer stable release is detected
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  check-upstream:
+    name: Check upstream release baselines
+    runs-on: ubuntu-24.04
+    env:
+      GH_TOKEN: ${{ github.token }}
+      FAIL_ON_UPDATE: ${{ inputs.fail_on_update || false }}
+    steps:
+      - name: Check out maintenance baseline
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Check stable upstream releases
+        shell: bash
+        run: |
+          set -euo pipefail
+          updates=0
+
+          for key in axolotl_pm devtools; do
+            repository="$(jq -r --arg key "${key}" '.[$key].repository' maintenance-baseline.json)"
+            tested="$(jq -r --arg key "${key}" '.[$key].tested_tag' maintenance-baseline.json)"
+            release="$(curl --fail --silent --show-error \
+              --header "Authorization: Bearer ${GH_TOKEN}" \
+              --header "Accept: application/vnd.github+json" \
+              --header "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${repository}/releases/latest")"
+            latest="$(jq -r '.tag_name' <<<"${release}")"
+            ref="$(curl --fail --silent --show-error \
+              --header "Authorization: Bearer ${GH_TOKEN}" \
+              --header "Accept: application/vnd.github+json" \
+              --header "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${repository}/git/ref/tags/${latest}")"
+            tag_type="$(jq -r '.object.type' <<<"${ref}")"
+            tag_sha="$(jq -r '.object.sha' <<<"${ref}")"
+            if [[ "${tag_type}" == "tag" ]]; then
+              latest_commit="$(curl --fail --silent --show-error \
+                --header "Authorization: Bearer ${GH_TOKEN}" \
+                --header "Accept: application/vnd.github+json" \
+                --header "X-GitHub-Api-Version: 2022-11-28" \
+                "https://api.github.com/repos/${repository}/git/tags/${tag_sha}" \
+                | jq -r '.object.sha')"
+            else
+              latest_commit="${tag_sha}"
+            fi
+
+            if [[ "${tested#v}" == "${latest#v}" ]]; then
+              status="Current"
+            else
+              status="Update available"
+              updates=$((updates + 1))
+              echo "::warning title=${repository} update::${latest} is newer than tested baseline ${tested}. Review compatibility gates before updating."
+            fi
+
+            {
+              echo "### ${repository}"
+              echo
+              echo "- Tested baseline: ${tested}"
+              echo "- Latest stable: ${latest}"
+              echo "- Latest commit: `${latest_commit}`"
+              echo "- Status: ${status}"
+              echo
+            } >> "${GITHUB_STEP_SUMMARY}"
+          done
+
+          if [[ "${FAIL_ON_UPDATE}" == "true" && ${updates} -gt 0 ]]; then
+            echo "A newer stable upstream release requires compatibility review." >&2
+            exit 1
+          fi
