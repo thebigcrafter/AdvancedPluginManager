@@ -24,13 +24,13 @@ jobs:
       - name: Install PHPStan Composer dependencies
         run: composer install --ignore-platform-reqs --no-dev
         
-      - name: Download ConsoleScript.php
-        run: curl -o ../ConsoleScript.php https://raw.githubusercontent.com/pmmp/DevTools/master/src/ConsoleScript.php
+      - name: Fetch verified DevTools build script
+        run: curl --fail --location --output ../ConsoleScript.php https://raw.githubusercontent.com/pmmp/DevTools/11356dcdd502b6e6c0a0497d76e3df2b06a41b2b/src/ConsoleScript.php
         
       - name: Create build directory
         run: mkdir build
         
-      - name: Build plugin PHAR with ConsoleScript
+      - name: Build plugin PHAR with DevTools
         run: php -dphar.readonly=0 ../ConsoleScript.php --make plugin.yml,src,resources,vendor --out build/AdvancedPluginManager.phar
         
       - uses: actions/upload-artifact@v2
