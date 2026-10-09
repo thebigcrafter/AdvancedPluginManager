@@ -1,4 +1,4 @@
-name: Create Phar file
+name: Build
 
 on:
   push:
