@@ -14,10 +14,10 @@ jobs:
           - "8.0"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Set up PHP environment
-        uses: shivammathur/setup-php@2.15.0
+        uses: shivammathur/setup-php@daf6ef8034382aea2c4e1521ead10758419b02cf
         with:
           php-version: ${{ matrix.php }}
 
