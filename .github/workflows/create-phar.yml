@@ -1,4 +1,4 @@
-name: Build
+name: Build plugin PHAR
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Create Phar file
+    name: Build plugin PHAR
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup PHP
+      - name: Set up PHP environment
         uses: shivammathur/setup-php@2.15.0
         with:
           php-version: ${{ matrix.php }}
@@ -27,10 +27,10 @@ jobs:
       - name: Download ConsoleScript.php
         run: curl -o ../ConsoleScript.php https://raw.githubusercontent.com/pmmp/DevTools/master/src/ConsoleScript.php
         
-      - name: Create build folder
+      - name: Create build directory
         run: mkdir build
         
-      - name: Run ConsoleScript.php
+      - name: Build plugin PHAR with ConsoleScript
         run: php -dphar.readonly=0 ../ConsoleScript.php --make plugin.yml,src,resources,vendor --out build/AdvancedPluginManager.phar
         
       - uses: actions/upload-artifact@v2
