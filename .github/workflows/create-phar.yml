@@ -17,6 +17,14 @@ jobs:
       - name: Check out plugin source
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
+      - name: Check out DevTools source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: NhanAZ/DevTools
+          ref: 11356dcdd502b6e6c0a0497d76e3df2b06a41b2b
+          path: .ci/devtools
+          persist-credentials: false
+
       - name: Set up PHP environment
         uses: shivammathur/setup-php@daf6ef8034382aea2c4e1521ead10758419b02cf
         with:
@@ -25,14 +33,23 @@ jobs:
       - name: Install locked runtime dependencies
         run: composer install --no-dev --no-interaction --no-progress --prefer-dist --no-scripts --no-plugins
 
-      - name: Fetch pinned DevTools build script
-        run: curl --fail --location --output ../ConsoleScript.php https://raw.githubusercontent.com/pmmp/DevTools/a67f9af8d6cff1615975c68a9b171a8f09aac0c4/src/ConsoleScript.php
-
       - name: Create PHAR output directory
         run: mkdir build
 
+      - name: Stage legacy Poggit metadata
+        shell: bash
+        run: mv .poggit.yml .poggit.yml.devtools-backup
+
+      - name: Prepare locked Composer virions
+        run: php .ci/devtools/bin/devtools.php prepare --project=. --virions=build/devtools-virions
+
       - name: Build plugin PHAR with DevTools
-        run: php -dphar.readonly=0 ../ConsoleScript.php --make plugin.yml,src,resources,vendor --out build/AdvancedPluginManager.phar
+        run: >-
+          php -dphar.readonly=0 .ci/devtools/bin/devtools.php build
+          --project=. --virions=build/devtools-virions --out=build --overwrite
+
+      - name: Inspect PHAR with DevTools
+        run: php .ci/devtools/bin/devtools.php inspect --project=. --artifact=build/AdvancedPluginManager.phar
 
       - name: Verify PHAR contents
         run: >-
@@ -42,6 +59,11 @@ jobs:
             exit(1);
           }
           echo "Verified plugin manifest and main source file.\n";'
+
+      - name: Restore legacy Poggit metadata
+        if: always()
+        shell: bash
+        run: mv .poggit.yml.devtools-backup .poggit.yml
 
       - name: Upload verified plugin artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

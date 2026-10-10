@@ -22,7 +22,10 @@ Advanced Plugin Manager (APM) is a powerful, open source plugin manager inspired
 
 # Build and test
 
-The build workflow installs the locked runtime dependencies, creates the plugin PHAR with the pinned DevTools build script, and verifies the PHAR contents before uploading the artifact. Local contributors can run `composer install` and `composer run analyse` before reviewing the workflow artifact.
+The build workflow installs the locked runtime dependencies, checks out the
+verified DevTools source, prepares the locked Composer virions, and validates
+the PHAR before uploading the artifact. Local contributors can run Composer
+install and analysis before reviewing the workflow artifact.
 
 # Contributing
 
