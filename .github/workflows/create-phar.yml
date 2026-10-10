@@ -1,4 +1,4 @@
-name: Build plugin PHAR
+name: Build and validate plugin
 
 on:
   push:
@@ -14,26 +14,37 @@ jobs:
           - "8.1"
 
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Check out plugin source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Set up PHP environment
         uses: shivammathur/setup-php@daf6ef8034382aea2c4e1521ead10758419b02cf
         with:
           php-version: ${{ matrix.php }}
 
-      - name: Install Composer dependencies for the PHAR
-        run: composer install --ignore-platform-reqs --no-dev
+      - name: Install locked runtime dependencies
+        run: composer install --no-dev --no-interaction --no-progress --prefer-dist --no-scripts --no-plugins
 
-      - name: Fetch verified DevTools build script
+      - name: Fetch pinned DevTools build script
         run: curl --fail --location --output ../ConsoleScript.php https://raw.githubusercontent.com/pmmp/DevTools/a67f9af8d6cff1615975c68a9b171a8f09aac0c4/src/ConsoleScript.php
 
-      - name: Create build directory
+      - name: Create PHAR output directory
         run: mkdir build
 
       - name: Build plugin PHAR with DevTools
         run: php -dphar.readonly=0 ../ConsoleScript.php --make plugin.yml,src,resources,vendor --out build/AdvancedPluginManager.phar
 
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - name: Verify PHAR contents
+        run: >-
+          php -r '$phar = new Phar("build/AdvancedPluginManager.phar");
+          if (!isset($phar["plugin.yml"]) || !isset($phar["src/APM.php"])) {
+            fwrite(STDERR, "The PHAR is missing the plugin manifest or main source file.\n");
+            exit(1);
+          }
+          echo "Verified plugin manifest and main source file.\n";'
+
+      - name: Upload verified plugin artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: AdvancedPluginManager
           path: build/AdvancedPluginManager.phar

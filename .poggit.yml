@@ -7,11 +7,10 @@ projects:
     path: ""
     icon: assets/icon.jpg
     libs:
-    - src: dktapps-pm-pl/pmforms/pmforms
-      version: ^2.0.0
-    - src: CortexPE/Commando/Commando
-      version: ^3.0.0
-      branch: PM4
+    - src: thebigcrafter/pmforms/pmforms
+      version: ^2.3.4
+    - src: thebigcrafter/Commando/Commando
+      version: ^3.3.0
     - src: MintoD/libMCUnicodeChars/libMCUnicodeChars
       version: ^1.1.0
     lint:

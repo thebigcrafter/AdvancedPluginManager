@@ -15,6 +15,15 @@ Advanced Plugin Manager (APM) is a powerful, open source plugin manager inspired
 2. Move it to `plugins` folder.
 3. Restart your server.
 
+# Requirements
+
+- Axolotl-PM with plugin API 5.0.0 or a compatible API 5 release.
+- The plugin bundles its Composer virions in the distributed PHAR.
+
+# Build and test
+
+The build workflow installs the locked runtime dependencies, creates the plugin PHAR with the pinned DevTools build script, and verifies the PHAR contents before uploading the artifact. Local contributors can run `composer install` and `composer run analyse` before reviewing the workflow artifact.
+
 # Contributing
 
 Read our [contributing guide](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/CONTRIBUTING.md) to learn about reporting bugs, requesting features, and translating this plugin into another language.

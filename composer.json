@@ -3,9 +3,9 @@
     "description": "Plugin manager for PocketMine-MP",
     "type": "project",
     "require": {
-        "php": "^8.0",
-        "cortexpe/commando": "^3.0.0",
-        "dktapps/pmforms": "^2.3.0"
+        "php": "^8.1",
+        "thebigcrafter/commando": "3.3.1",
+        "dktapps/pmforms": "2.3.4"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1",
@@ -45,18 +45,21 @@
         {
             "type": "package",
             "package": {
-                "name": "cortexpe/commando",
-                "version": "3.0.0",
+                "name": "thebigcrafter/commando",
+                "version": "3.3.1",
                 "type": "library",
-                "description": "A Command Framework virion for PocketMine-MP",
+                "description": "A command framework virion for PocketMine-MP",
                 "dist": {
-                    "url": "https://api.github.com/repos/CortexPE/Commando/zipball/89a1bc1f9ffb748004888e38e0479e2ec58a3fc4",
+                    "url": "https://github.com/thebigcrafter/Commando/archive/963f7c0162ac195f76bfec0cfc7810164e4007b4.zip",
                     "type": "zip"
                 },
                 "source": {
                     "type": "git",
-                    "url": "https://github.com/CortexPE/Commando.git",
-                    "reference": "89a1bc1f9ffb748004888e38e0479e2ec58a3fc4"
+                    "url": "https://github.com/thebigcrafter/Commando.git",
+                    "reference": "963f7c0162ac195f76bfec0cfc7810164e4007b4"
+                },
+                "require": {
+                    "php": "^8.1"
                 },
                 "autoload": {
                     "psr-4": {
@@ -65,35 +68,33 @@
                 },
                 "extra": {
                     "virion": {
-                        "spec": "3.0",
+                        "spec": "3.1",
                         "namespace-root": "CortexPE\\Commando"
                     }
                 },
                 "license": [
                     "LGPL-3.0-only"
-                ],
-                "support": {
-                    "source": "https://github.com/CortexPE/Commando/tree/PM4",
-                    "issues": "https://github.com/CortexPE/Commando/issues"
-                },
-                "time": "2021-11-21T08:13:35+00:00"
+                ]
             }
         },
         {
             "type": "package",
             "package": {
                 "name": "dktapps/pmforms",
-                "version": "2.3.0",
+                "version": "2.3.4",
                 "type": "library",
                 "description": "Form API library for PocketMine-MP plugins",
                 "dist": {
-                    "url": "https://api.github.com/repos/dktapps-pm-pl/pmforms/zipball/70082f430c722b868dfdfeab7337ba6b944d21dd",
+                    "url": "https://github.com/thebigcrafter/pmforms/archive/51ebfa15d1b4449943c437066efed8a13bbcb543.zip",
                     "type": "zip"
                 },
                 "source": {
                     "type": "git",
-                    "url": "https://github.com/dktapps-pm-pl/pmforms.git",
-                    "reference": "70082f430c722b868dfdfeab7337ba6b944d21dd"
+                    "url": "https://github.com/thebigcrafter/pmforms.git",
+                    "reference": "51ebfa15d1b4449943c437066efed8a13bbcb543"
+                },
+                "require": {
+                    "php": "^8.1"
                 },
                 "autoload": {
                     "psr-4": {
@@ -108,12 +109,7 @@
                 },
                 "license": [
                     "LGPL-3.0"
-                ],
-                "support": {
-                    "source": "https://github.com/dktapps-pm-pl/pmforms/tree/2.3.0",
-                    "issues": "https://github.com/dktapps-pm-pl/pmforms/issues"
-                },
-                "time": "2025-03-27T17:10:08+00:00"
+                ]
             }
         }
     ]
