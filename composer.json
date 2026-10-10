@@ -5,7 +5,7 @@
     "require": {
         "php": "^8.0",
         "cortexpe/commando": "dev-PM4",
-        "dktapps/pmforms": "dev-master"
+        "dktapps/pmforms": "^2.3.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.2",
@@ -43,8 +43,41 @@
     ],
     "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/dktapps-pm-pl/pmforms"
+            "type": "package",
+            "package": {
+                "name": "dktapps/pmforms",
+                "version": "2.3.0",
+                "type": "library",
+                "description": "Form API library for PocketMine-MP plugins",
+                "dist": {
+                    "url": "https://api.github.com/repos/dktapps-pm-pl/pmforms/zipball/70082f430c722b868dfdfeab7337ba6b944d21dd",
+                    "type": "zip"
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/dktapps-pm-pl/pmforms.git",
+                    "reference": "70082f430c722b868dfdfeab7337ba6b944d21dd"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "": "src/"
+                    }
+                },
+                "extra": {
+                    "virion": {
+                        "spec": "3.0",
+                        "namespace-root": "dktapps\\pmforms"
+                    }
+                },
+                "license": [
+                    "LGPL-3.0"
+                ],
+                "support": {
+                    "source": "https://github.com/dktapps-pm-pl/pmforms/tree/2.3.0",
+                    "issues": "https://github.com/dktapps-pm-pl/pmforms/issues"
+                },
+                "time": "2025-03-27T17:10:08+00:00"
+            }
         }
     ]
 }

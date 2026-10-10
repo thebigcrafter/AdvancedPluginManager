@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9484bd63c0b45141b89b1ecc81a20aa",
+    "content-hash": "e275e9ce4f3650e8612c51db0a26d334",
     "packages": [
         {
             "name": "cortexpe/commando",
@@ -41,7 +41,7 @@
         },
         {
             "name": "dktapps/pmforms",
-            "version": "dev-master",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dktapps-pm-pl/pmforms.git",
@@ -49,19 +49,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dktapps-pm-pl/pmforms/zipball/70082f430c722b868dfdfeab7337ba6b944d21dd",
-                "reference": "70082f430c722b868dfdfeab7337ba6b944d21dd",
-                "shasum": ""
+                "url": "https://api.github.com/repos/dktapps-pm-pl/pmforms/zipball/70082f430c722b868dfdfeab7337ba6b944d21dd"
             },
-            "require": {
-                "pocketmine/pocketmine-mp": "^4.0.0 || ^5.0.0"
-            },
-            "require-dev": {
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^1.2.0",
-                "phpstan/phpstan-strict-rules": "^1.0"
-            },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "virion": {
@@ -3467,14 +3456,13 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cortexpe/commando": 20,
-        "dktapps/pmforms": 20
+        "cortexpe/commando": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.0"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
