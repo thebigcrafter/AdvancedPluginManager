@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6394d2803ae3ab7333da03b41e83328",
+    "content-hash": "0d1b55cc32ca0f7a1fa858c80360a818",
     "packages": [
         {
             "name": "dktapps/pmforms",
@@ -40,15 +40,15 @@
         },
         {
             "name": "thebigcrafter/commando",
-            "version": "3.3.1",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thebigcrafter/Commando.git",
-                "reference": "963f7c0162ac195f76bfec0cfc7810164e4007b4"
+                "reference": "b2f0028217edd05cfe536bc25a35938a289b04f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thebigcrafter/Commando/archive/963f7c0162ac195f76bfec0cfc7810164e4007b4.zip"
+                "url": "https://github.com/thebigcrafter/Commando/archive/b2f0028217edd05cfe536bc25a35938a289b04f4.zip"
             },
             "require": {
                 "php": "^8.1"
