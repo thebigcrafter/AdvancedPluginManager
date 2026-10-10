@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e275e9ce4f3650e8612c51db0a26d334",
+    "content-hash": "ceaed8404b61a5f4ccbc697994359439",
     "packages": [
         {
             "name": "cortexpe/commando",
-            "version": "dev-PM4",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CortexPE/Commando.git",
@@ -16,26 +16,27 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CortexPE/Commando/zipball/89a1bc1f9ffb748004888e38e0479e2ec58a3fc4",
-                "reference": "89a1bc1f9ffb748004888e38e0479e2ec58a3fc4",
-                "shasum": ""
+                "url": "https://api.github.com/repos/CortexPE/Commando/zipball/89a1bc1f9ffb748004888e38e0479e2ec58a3fc4"
             },
             "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CortexPE\\Commando\\": [
-                        "src\\CortexPE\\Commando\\"
-                    ]
+            "extra": {
+                "virion": {
+                    "spec": "3.0",
+                    "namespace-root": "CortexPE\\Commando"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload": {
+                "psr-4": {
+                    "CortexPE\\Commando\\": "src/CortexPE/Commando/"
+                }
+            },
             "license": [
                 "LGPL-3.0-only"
             ],
-            "description": "A Command Framework virion for PocketMine-MP ",
+            "description": "A Command Framework virion for PocketMine-MP",
             "support": {
-                "issues": "https://github.com/CortexPE/Commando/issues",
-                "source": "https://github.com/CortexPE/Commando/tree/PM4"
+                "source": "https://github.com/CortexPE/Commando/tree/PM4",
+                "issues": "https://github.com/CortexPE/Commando/issues"
             },
             "time": "2021-11-21T08:13:35+00:00"
         },
@@ -3455,9 +3456,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "cortexpe/commando": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

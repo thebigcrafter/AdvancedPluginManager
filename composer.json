@@ -4,7 +4,7 @@
     "type": "project",
     "require": {
         "php": "^8.0",
-        "cortexpe/commando": "dev-PM4",
+        "cortexpe/commando": "^3.0.0",
         "dktapps/pmforms": "^2.3.0"
     },
     "require-dev": {
@@ -42,6 +42,43 @@
         }
     ],
     "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "cortexpe/commando",
+                "version": "3.0.0",
+                "type": "library",
+                "description": "A Command Framework virion for PocketMine-MP",
+                "dist": {
+                    "url": "https://api.github.com/repos/CortexPE/Commando/zipball/89a1bc1f9ffb748004888e38e0479e2ec58a3fc4",
+                    "type": "zip"
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/CortexPE/Commando.git",
+                    "reference": "89a1bc1f9ffb748004888e38e0479e2ec58a3fc4"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "CortexPE\\Commando\\": "src/CortexPE/Commando/"
+                    }
+                },
+                "extra": {
+                    "virion": {
+                        "spec": "3.0",
+                        "namespace-root": "CortexPE\\Commando"
+                    }
+                },
+                "license": [
+                    "LGPL-3.0-only"
+                ],
+                "support": {
+                    "source": "https://github.com/CortexPE/Commando/tree/PM4",
+                    "issues": "https://github.com/CortexPE/Commando/issues"
+                },
+                "time": "2021-11-21T08:13:35+00:00"
+            }
+        },
         {
             "type": "package",
             "package": {
