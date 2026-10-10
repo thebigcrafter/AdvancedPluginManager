@@ -34,4 +34,4 @@ This project has adopted a Code of Conduct that we expect project participants t
 
 # License
 
-Released under the [GPL-3.0](https://github.com/MintoD/AdvancedPluginManager/blob/main/LICENSE) license.
+Released under the [GPL-3.0](https://github.com/thebigcrafter/AdvancedPluginManager/blob/main/LICENSE) license.
