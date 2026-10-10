@@ -97,7 +97,7 @@
                 },
                 "autoload": {
                     "psr-4": {
-                        "": "src/"
+                        "dktapps\\pmforms\\": "src/dktapps/pmforms/"
                     }
                 },
                 "extra": {

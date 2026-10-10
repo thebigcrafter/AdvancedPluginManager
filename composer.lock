@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ceaed8404b61a5f4ccbc697994359439",
+    "content-hash": "cee994139587858d8702e5d430083390",
     "packages": [
         {
             "name": "cortexpe/commando",
@@ -61,7 +61,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "": "src/"
+                    "dktapps\\pmforms\\": "src/dktapps/pmforms/"
                 }
             },
             "license": [
