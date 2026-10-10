@@ -24,7 +24,7 @@ class APM extends PluginBase
 	/**
 	 * Plugins cache
 	 *
-	 * @var array<array<string, string|int>>
+	 * @var array<array<string, string>>
 	 */
 	public static array $reposPluginsCache = [];
 
@@ -56,7 +56,11 @@ class APM extends PluginBase
 
 	public static function getInstance(): self
 	{
-		return self::$instance;
+		$instance = self::$instance;
+		if ($instance === null) {
+			throw new \LogicException("Advanced Plugin Manager is not initialized.");
+		}
+		return $instance;
 	}
 
 	public static function getLanguage(): Language
@@ -72,7 +76,8 @@ class APM extends PluginBase
 		$this->config = $this->getConfig();
 		$this->repos = new Config($this->getDataFolder() . "repos.yml", Config::YAML, ["repositories" => [$this->defaultRepo]]);
 
-		$this->initLanguageFiles($this->config->get("language"), $this->languages);
+		$language = $this->config->get("language");
+		$this->initLanguageFiles(is_string($language) ? $language : "eng", $this->languages);
 		$this->cacheRepo();
 
 		$this->getServer()->getCommandMap()->register("apm", new APMCommand($this, "apm", "Advanced Plugin Manager"));
@@ -105,7 +110,25 @@ class APM extends PluginBase
 	{
 		$this->reloadConfig();
 
-		$this->getScheduler()->scheduleTask(new CacheRepoInfo($this->repos->get("repositories")));
-		$this->getScheduler()->scheduleTask(new CacheRepoPlugins($this->repos->get("repositories")));
+		$repositories = $this->getRepositoryUrls();
+		$this->getScheduler()->scheduleTask(new CacheRepoInfo($repositories));
+		$this->getScheduler()->scheduleTask(new CacheRepoPlugins($repositories));
+	}
+
+	/** @return list<string> */
+	public function getRepositoryUrls(): array
+	{
+		$repositories = $this->repos->get("repositories");
+		if (!is_array($repositories)) {
+			return [$this->defaultRepo];
+		}
+
+		$urls = [];
+		foreach ($repositories as $repository) {
+			if (is_string($repository)) {
+				$urls[] = $repository;
+			}
+		}
+		return $urls;
 	}
 }

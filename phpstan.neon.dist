@@ -1,9 +1,6 @@
 parameters:
-	level: 6
-	paths:
-		- src
-	excludePaths:
-		analyse:
-			- src/thebigcrafter/APM/error
-	scanDirectories:
-		- vendor/dktapps/pmforms/src
+    level: max
+    paths:
+        - src
+    scanDirectories:
+        - vendor/dktapps/pmforms/src

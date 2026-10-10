@@ -27,17 +27,21 @@ class CacheRepoInfo extends Task
 	public function onRun(): void
 	{
 		foreach ($this->urls as $url) {
-			if (empty(Internet::getURL($url . "Release.json")) || Internet::getURL($url . "Release.json")->getCode() != 200) {
+			$response = Internet::getURL($url . "Release.json");
+			if ($response === null || $response->getCode() !== 200) {
 				return;
 			}
 
-			$info = json_decode(Internet::getURL($url . "Release.json")->getBody(), true);
+			$info = json_decode($response->getBody(), true);
+			if (!is_array($info) || !is_string($info["label"] ?? null) || !is_string($info["description"] ?? null)) {
+				return;
+			}
 
 			$this->repoInfo[] = [
 				"repo" => $url,
 				"label" => $info["label"],
 				"description" => $info["description"],
-			];;
+			];
 		}
 
 		APM::$reposInfoCache = $this->repoInfo;

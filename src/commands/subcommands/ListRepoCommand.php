@@ -21,7 +21,7 @@ class ListRepoCommand extends BaseSubCommand
 		if ($sender instanceof Player) {
 			$sender->sendForm(ListRepoForm::get());
 		} else {
-			foreach (APM::getInstance()->repos->get("repositories") as $repo) {
+			foreach (APM::getInstance()->getRepositoryUrls() as $repo) {
 				$repositoriesList = $repositoriesList . $repo . "\n";
 			}
 		}

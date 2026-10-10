@@ -27,7 +27,7 @@ class Adder
 			}
 
 			$reposFile = APM::getInstance()->repos;
-			$repos = $reposFile->get("repositories");
+			$repos = APM::getInstance()->getRepositoryUrls();
 			$repos[] = $url;
 			$reposFile->set("repositories", $repos);
 			$reposFile->save();

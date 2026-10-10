@@ -15,14 +15,22 @@ class Utils
 	 */
 	public static function isAPMRepo(string $url): bool
 	{
-		$release = Internet::getURL($url . "Release.json")->getCode();
-		$plugins = Internet::getURL($url . "Plugins.json")->getCode();
+		$releaseResponse = Internet::getURL($url . "Release.json");
+		$pluginsResponse = Internet::getURL($url . "Plugins.json");
+		if ($releaseResponse === null || $pluginsResponse === null) {
+			return false;
+		}
+		$release = $releaseResponse->getCode();
+		$plugins = $pluginsResponse->getCode();
 
 		if ($plugins !== 200 || $release !== 200) {
 			return false;
 		}
 
-		$release = json_decode(Internet::getURL($url . "Release.json")->getBody(), true);
+		$release = json_decode($releaseResponse->getBody(), true);
+		if (!is_array($release)) {
+			return false;
+		}
 
 		if (isset($release["label"]) && isset($release["suite"]) && isset($release["codename"]) && isset($release["description"])) {
 			return true;
@@ -41,7 +49,7 @@ class Utils
 		$latest = "";
 
 		foreach ($versions as $version) {
-			if (version_compare($version, $latest) > $latest) {
+			if (version_compare($version, $latest) > 0) {
 				$latest = $version;
 			}
 		}

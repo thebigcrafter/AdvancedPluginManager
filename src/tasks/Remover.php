@@ -16,7 +16,7 @@ class Remover
 	public static function removeRepo(string $url): bool
 	{
 		$repositories = APM::getInstance()->repos;
-		$repositoriesList = $repositories->get("repositories");
+		$repositoriesList = APM::getInstance()->getRepositoryUrls();
 		if (in_array($url, $repositoriesList, true)) {
 			unset($repositoriesList[array_search($url, $repositoriesList, true)]);
 			$repositories->set("repositories", $repositoriesList);

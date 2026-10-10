@@ -27,13 +27,20 @@ class CacheRepoPlugins extends Task
 	public function onRun(): void
 	{
 		foreach ($this->urls as $url) {
-			if (empty(Internet::getURL($url . "Plugins.json")) || Internet::getURL($url . "Plugins.json")->getCode() != 200) {
+			$response = Internet::getURL($url . "Plugins.json");
+			if ($response === null || $response->getCode() !== 200) {
 				return;
 			}
 
-			$data = json_decode(Internet::getURL($url . "Plugins.json")->getBody(), true);
+			$data = json_decode($response->getBody(), true);
+			if (!is_array($data)) {
+				return;
+			}
 
 			foreach ($data as $plugin) {
+				if (!is_array($plugin) || !is_string($plugin["plugin"] ?? null) || !is_string($plugin["name"] ?? null) || !is_string($plugin["author"] ?? null) || !is_string($plugin["version"] ?? null) || !is_string($plugin["description"] ?? null) || !is_string($plugin["file"] ?? null) || !is_string($plugin["md5"] ?? null) || !is_string($plugin["sha1"] ?? null) || !is_string($plugin["sha256"] ?? null) || !is_string($plugin["sha512"] ?? null)) {
+					continue;
+				}
 				$this->repoPlugins[] = [
 					"plugin" => $plugin["plugin"],
 					"name" => $plugin["name"],

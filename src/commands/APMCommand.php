@@ -49,4 +49,9 @@ class APMCommand extends BaseCommand
 			$this->registerSubCommand($subCommand);
 		}
 	}
+
+	public function getPermission(): string
+	{
+		return "apm.cmd";
+	}
 }
