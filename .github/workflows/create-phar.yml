@@ -43,6 +43,7 @@ jobs:
           --ignore-platform-req=ext-pmmpthread
           --ignore-platform-req=ext-crypto
           --ignore-platform-req=ext-leveldb
+          --ignore-platform-req=ext-morton
 
       - name: Create PHAR output directory
         run: mkdir build
