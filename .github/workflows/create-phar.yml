@@ -10,7 +10,7 @@ jobs:
     with:
       devtools-ref: 11356dcdd502b6e6c0a0497d76e3df2b06a41b2b
       php-version: "8.1"
-      pm-version-major: "4"
+      pm-version-major: "5"
       virions: .devtools-virions
       prepare-dependencies: true
       artifact-name: AdvancedPluginManager
