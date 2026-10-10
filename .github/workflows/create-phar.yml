@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Check out plugin source
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Check out DevTools source
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           repository: NhanAZ/DevTools
           ref: 11356dcdd502b6e6c0a0497d76e3df2b06a41b2b
