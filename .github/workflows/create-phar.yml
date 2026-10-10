@@ -6,12 +6,34 @@ on:
 
 jobs:
   build:
-    uses: NhanAZ/DevTools/.github/workflows/build-plugin.yml@11356dcdd502b6e6c0a0497d76e3df2b06a41b2b
-    with:
-      devtools-ref: 11356dcdd502b6e6c0a0497d76e3df2b06a41b2b
-      php-version: "8.1"
-      pm-version-major: "5"
-      virions: .devtools-virions
-      prepare-dependencies: true
-      artifact-name: AdvancedPluginManager
-      retention-days: 14
+    name: Build plugin PHAR
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php:
+          - "8.1"
+
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up PHP environment
+        uses: shivammathur/setup-php@daf6ef8034382aea2c4e1521ead10758419b02cf
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install Composer dependencies for the PHAR
+        run: composer install --ignore-platform-reqs --no-dev
+
+      - name: Fetch verified DevTools build script
+        run: curl --fail --location --output ../ConsoleScript.php https://raw.githubusercontent.com/pmmp/DevTools/a67f9af8d6cff1615975c68a9b171a8f09aac0c4/src/ConsoleScript.php
+
+      - name: Create build directory
+        run: mkdir build
+
+      - name: Build plugin PHAR with DevTools
+        run: php -dphar.readonly=0 ../ConsoleScript.php --make plugin.yml,src,resources,vendor --out build/AdvancedPluginManager.phar
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: AdvancedPluginManager
+          path: build/AdvancedPluginManager.phar
