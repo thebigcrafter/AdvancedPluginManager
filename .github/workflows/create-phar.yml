@@ -33,6 +33,10 @@ jobs:
       - name: Install locked runtime dependencies
         run: composer install --no-dev --no-interaction --no-progress --prefer-dist --no-scripts --no-plugins
 
+      - name: Install locked DevTools dependencies
+        working-directory: .ci/devtools
+        run: composer install --no-interaction --no-progress --prefer-dist --no-scripts --no-plugins
+
       - name: Create PHAR output directory
         run: mkdir build
 
