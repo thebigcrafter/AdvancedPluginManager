@@ -44,7 +44,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/MintoD/pmforms"
+            "url": "https://github.com/dktapps-pm-pl/pmforms"
         }
     ]
 }

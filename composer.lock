@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7150081087f6b4dad5f203c114c7814",
+    "content-hash": "f9484bd63c0b45141b89b1ecc81a20aa",
     "packages": [
         {
             "name": "cortexpe/commando",
@@ -44,30 +44,45 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/MintoD/pmforms.git",
-                "reference": "586551ef6835b23e5068ab9c608a219274e18978"
+                "url": "https://github.com/dktapps-pm-pl/pmforms.git",
+                "reference": "70082f430c722b868dfdfeab7337ba6b944d21dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MintoD/pmforms/zipball/586551ef6835b23e5068ab9c608a219274e18978",
-                "reference": "586551ef6835b23e5068ab9c608a219274e18978",
+                "url": "https://api.github.com/repos/dktapps-pm-pl/pmforms/zipball/70082f430c722b868dfdfeab7337ba6b944d21dd",
+                "reference": "70082f430c722b868dfdfeab7337ba6b944d21dd",
                 "shasum": ""
+            },
+            "require": {
+                "pocketmine/pocketmine-mp": "^4.0.0 || ^5.0.0"
+            },
+            "require-dev": {
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^1.2.0",
+                "phpstan/phpstan-strict-rules": "^1.0"
             },
             "default-branch": true,
             "type": "library",
+            "extra": {
+                "virion": {
+                    "spec": "3.0",
+                    "namespace-root": "dktapps\\pmforms"
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "Dktapps\\Pmforms\\": "src/dktapps/pmforms/"
+                    "": "src/"
                 }
             },
             "license": [
-                "LGPL-3.0-only"
+                "LGPL-3.0"
             ],
             "description": "Form API library for PocketMine-MP plugins",
             "support": {
-                "source": "https://github.com/MintoD/pmforms/tree/master"
+                "source": "https://github.com/dktapps-pm-pl/pmforms/tree/2.3.0",
+                "issues": "https://github.com/dktapps-pm-pl/pmforms/issues"
             },
-            "time": "2021-12-04T12:14:26+00:00"
+            "time": "2025-03-27T17:10:08+00:00"
         }
     ],
     "packages-dev": [
