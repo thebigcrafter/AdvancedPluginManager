@@ -42,6 +42,7 @@ jobs:
           --ignore-platform-req=ext-chunkutils2
           --ignore-platform-req=ext-pmmpthread
           --ignore-platform-req=ext-crypto
+          --ignore-platform-req=ext-leveldb
 
       - name: Create PHAR output directory
         run: mkdir build
