@@ -35,7 +35,12 @@ jobs:
 
       - name: Install locked DevTools dependencies
         working-directory: .ci/devtools
-        run: composer install --no-interaction --no-progress --prefer-dist --no-scripts --no-plugins
+        run: >-
+          composer install --no-interaction --no-progress --prefer-dist
+          --no-scripts --no-plugins
+          --ignore-platform-req=ext-encoding
+          --ignore-platform-req=ext-chunkutils2
+          --ignore-platform-req=ext-pmmpthread
 
       - name: Create PHAR output directory
         run: mkdir build
@@ -67,7 +72,10 @@ jobs:
       - name: Restore legacy Poggit metadata
         if: always()
         shell: bash
-        run: mv .poggit.yml.devtools-backup .poggit.yml
+        run: |
+          if [ -f .poggit.yml.devtools-backup ]; then
+            mv .poggit.yml.devtools-backup .poggit.yml
+          fi
 
       - name: Upload verified plugin artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
