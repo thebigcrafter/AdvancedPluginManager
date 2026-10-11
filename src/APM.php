@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace thebigcrafter\APM;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$composerAutoloader = __DIR__ . '/../vendor/autoload.php';
+if (is_file($composerAutoloader)) {
+	require_once $composerAutoloader;
+}
 
 use pocketmine\lang\Language;
 use pocketmine\plugin\PluginBase;
