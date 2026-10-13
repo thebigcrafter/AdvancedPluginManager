@@ -26,7 +26,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up PHP environment
-        uses: shivammathur/setup-php@daf6ef8034382aea2c4e1521ead10758419b02cf
+        uses: shivammathur/setup-php@4c5c122aa65e90c21a9ddc71071e94ad8b6d33e2
         with:
           php-version: ${{ matrix.php }}
 
