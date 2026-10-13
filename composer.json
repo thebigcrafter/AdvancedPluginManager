@@ -10,7 +10,7 @@
     "require-dev": {
         "phpstan/phpstan": "^2.1",
         "friendsofphp/php-cs-fixer": "^3.3",
-        "pocketmine/pocketmine-mp": "^5.44.3"
+        "axolotl-pm/pocketmine-mp": "5.49.1"
     },
     "license": "GPL-3.0-only",
     "autoload": {
@@ -42,6 +42,11 @@
         }
     ],
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/axolotl-pm/PocketMine-MP",
+            "no-api": true
+        },
         {
             "type": "package",
             "package": {
