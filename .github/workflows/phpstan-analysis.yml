@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Analyze PHP code with PHPStan
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         php:
