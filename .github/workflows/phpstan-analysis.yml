@@ -30,5 +30,8 @@ jobs:
       - name: Run installer and upgrade regression
         run: composer run-script test:installer
 
+      - name: Run repository plugin cache regression
+        run: composer run-script test:cache
+
       - name: Run PHPStan at maximum level
         run: composer run-script analyse
