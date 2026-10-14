@@ -21,7 +21,8 @@
     "scripts": {
         "fix-cs": "./vendor/bin/php-cs-fixer fix",
         "analyse": "./vendor/bin/phpstan analyse -c phpstan.neon.dist",
-        "test:utils": "@php tests/utils.php"
+        "test:utils": "@php tests/utils.php",
+        "test:installer": "@php tests/installer.php"
     },
     "authors": [
         {

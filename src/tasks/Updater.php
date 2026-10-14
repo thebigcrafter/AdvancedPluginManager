@@ -15,6 +15,6 @@ class Updater
 
 	public static function updatePlugin(string $plugin): bool
 	{
-		return Installer::install($plugin);
+		return Installer::install($plugin, true);
 	}
 }

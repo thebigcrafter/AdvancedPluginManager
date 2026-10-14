@@ -27,5 +27,8 @@ jobs:
       - name: Run repository validation regression
         run: composer run-script test:utils
 
+      - name: Run installer and upgrade regression
+        run: composer run-script test:installer
+
       - name: Run PHPStan at maximum level
         run: composer run-script analyse

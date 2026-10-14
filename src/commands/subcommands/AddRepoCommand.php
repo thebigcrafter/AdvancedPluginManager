@@ -29,6 +29,7 @@ class AddRepoCommand extends BaseSubCommand
 		} else {
 			if (!isset($args["url"])) {
 				ErrorHandler::sendErrorToConsole(ErrorHandler::$INVALID_URL);
+				return;
 			}
 			if (Adder::addRepo((string) $args["url"])) {
 				$sender->sendMessage(APM::$PREFIX . APM::getLanguage()->translateString("add.repo.success"));
