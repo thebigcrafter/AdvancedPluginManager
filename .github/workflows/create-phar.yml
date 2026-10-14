@@ -4,84 +4,64 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   build:
-    name: Build plugin PHAR
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php:
-          - "8.1"
+    name: Build AdvancedPluginManager PHAR
+    uses: NhanAZ/DevTools/.github/workflows/build-plugin.yml@3dedda2a1f6e42885aa680aaadeebacbc0f62733
+    with:
+      axolotl-ref: dfe0d07e48a9e8d5a4a242fa43ff1cd3b743a955
+      prepare-dependencies: true
+      virions: .devtools-virions
+      php-version: '8.1'
+      pm-version-major: '5'
+      phpstan: off
+      artifact-name: AdvancedPluginManager-${{ github.sha }}
+      retention-days: 14
 
+  verify:
+    name: Verify AdvancedPluginManager artifact
+    needs: build
+    runs-on: ubuntu-24.04
     steps:
-      - name: Check out plugin source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-
-      - name: Check out DevTools source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          repository: NhanAZ/DevTools
-          ref: 3dedda2a1f6e42885aa680aaadeebacbc0f62733
-          path: .ci/devtools
-          persist-credentials: false
-
       - name: Set up PHP environment
         uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962
         with:
-          php-version: ${{ matrix.php }}
+          php-version: '8.1'
 
-      - name: Install locked runtime dependencies
-        run: composer install --no-dev --no-interaction --no-progress --prefer-dist --no-scripts --no-plugins
+      - name: Download verified build artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          artifact-ids: ${{ needs.build.outputs.artifact-id }}
+          path: artifact
 
-      - name: Install locked DevTools dependencies
-        working-directory: .ci/devtools
-        run: >-
-          composer install --no-interaction --no-progress --prefer-dist
-          --no-scripts --no-plugins
-          --ignore-platform-req=ext-encoding
-          --ignore-platform-req=ext-chunkutils2
-          --ignore-platform-req=ext-pmmpthread
-          --ignore-platform-req=ext-crypto
-          --ignore-platform-req=ext-leveldb
-          --ignore-platform-req=ext-morton
-
-      - name: Create PHAR output directory
-        run: mkdir build
-
-      - name: Stage legacy Poggit metadata
-        shell: bash
-        run: mv .poggit.yml .poggit.yml.devtools-backup
-
-      - name: Prepare locked Composer virions
-        run: php .ci/devtools/bin/devtools.php prepare --project=. --virions=build/devtools-virions
-
-      - name: Build plugin PHAR with DevTools
-        run: >-
-          php -dphar.readonly=0 .ci/devtools/bin/devtools.php build
-          --project=. --virions=build/devtools-virions --out=build --overwrite
-
-      - name: Inspect PHAR with DevTools
-        run: php .ci/devtools/bin/devtools.php inspect --project=. --artifact=build/AdvancedPluginManager.phar
-
-      - name: Verify PHAR contents
-        run: >-
-          php -r '$phar = new Phar("build/AdvancedPluginManager.phar");
-          if (!isset($phar["plugin.yml"]) || !isset($phar["src/APM.php"])) {
-            fwrite(STDERR, "The PHAR is missing the plugin manifest or main source file.\n");
-            exit(1);
-          }
-          echo "Verified plugin manifest and main source file.\n";'
-
-      - name: Restore legacy Poggit metadata
-        if: always()
+      - name: Verify PHAR contents and build metadata
         shell: bash
         run: |
-          if [ -f .poggit.yml.devtools-backup ]; then
-            mv .poggit.yml.devtools-backup .poggit.yml
-          fi
-
-      - name: Upload verified plugin artifact
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
-        with:
-          name: AdvancedPluginManager
-          path: build/AdvancedPluginManager.phar
+          set -euo pipefail
+          phar="$(find artifact -maxdepth 1 -type f -name '*.phar' -print -quit)"
+          metadata='artifact/build-metadata.json'
+          test -n "$phar"
+          test -f "$metadata"
+          php -r '
+            $phar = new Phar($argv[1]);
+            foreach (["plugin.yml", "src/APM.php"] as $path) {
+                if (!isset($phar[$path])) {
+                    fwrite(STDERR, "The PHAR is missing {$path}.\n");
+                    exit(1);
+                }
+            }
+            $manifest = $phar["plugin.yml"]->getContent();
+            if (!str_contains($manifest, "name: AdvancedPluginManager")) {
+                fwrite(STDERR, "The PHAR manifest has the wrong plugin name.\n");
+                exit(1);
+            }
+            $metadata = json_decode(file_get_contents($argv[2]), true, 512, JSON_THROW_ON_ERROR);
+            if (($metadata["success"] ?? false) !== true || ($metadata["data"]["plugin"]["name"] ?? null) !== "AdvancedPluginManager") {
+                fwrite(STDERR, "The DevTools build metadata is invalid.\n");
+                exit(1);
+            }
+            echo "Verified plugin manifest, main source file and DevTools metadata.\n";
+          ' "$phar" "$metadata"
