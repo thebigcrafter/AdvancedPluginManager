@@ -47,7 +47,7 @@ class CacheRepoPlugins extends Task
 					"author" => $plugin["author"],
 					"version" => $plugin["version"],
 					"description" => $plugin["description"],
-					"download_url" => $plugin["file"],
+					"file" => $plugin["file"],
 					"md5" => $plugin["md5"],
 					"sha1" => $plugin["sha1"],
 					"sha256" => $plugin["sha256"],
