@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           repository: NhanAZ/DevTools
-          ref: 628368d9476762bd23a194120b4a9a9d5ee299a1
+          ref: 3dedda2a1f6e42885aa680aaadeebacbc0f62733
           path: .ci/devtools
           persist-credentials: false
 
