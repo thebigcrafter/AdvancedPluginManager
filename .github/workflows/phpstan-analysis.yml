@@ -24,5 +24,8 @@ jobs:
       - name: Install PHPStan Composer dependencies
         run: composer install --prefer-dist --no-interaction --ignore-platform-reqs
 
+      - name: Run repository validation regression
+        run: composer run-script test:utils
+
       - name: Run PHPStan at maximum level
         run: composer run-script analyse

@@ -32,13 +32,22 @@ class Utils
 			return false;
 		}
 
-		if (isset($release["label"]) && isset($release["suite"]) && isset($release["codename"]) && isset($release["description"])) {
-			return true;
-		} else {
+		if (!isset($release["label"]) || !isset($release["suite"]) || !isset($release["codename"]) || !isset($release["description"])) {
 			return false;
 		}
 
-		// TODO: Check the Plugins.json is valid.
+		$pluginList = json_decode($pluginsResponse->getBody(), true);
+		if (!is_array($pluginList)) {
+			return false;
+		}
+
+		foreach ($pluginList as $plugin) {
+			if (!is_array($plugin) || !is_string($plugin["plugin"] ?? null) || !is_string($plugin["name"] ?? null) || !is_string($plugin["author"] ?? null) || !is_string($plugin["version"] ?? null) || !is_string($plugin["description"] ?? null) || !is_string($plugin["file"] ?? null) || !is_string($plugin["md5"] ?? null) || !is_string($plugin["sha1"] ?? null) || !is_string($plugin["sha256"] ?? null) || !is_string($plugin["sha512"] ?? null)) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	/**
