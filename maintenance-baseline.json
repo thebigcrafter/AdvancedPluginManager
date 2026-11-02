@@ -2,12 +2,12 @@
   "organization": "thebigcrafter",
   "axolotl_pm": {
     "repository": "axolotl-pm/PocketMine-MP",
-    "tested_tag": "5.49.1",
-    "tested_commit": "dfe0d07e48a9e8d5a4a242fa43ff1cd3b743a955"
+    "tested_tag": "5.51.1",
+    "tested_commit": "e881fc1bc1c401545baf6bd1f824e41ff3f57bd1"
   },
   "devtools": {
     "repository": "NhanAZ/DevTools",
-    "tested_tag": "v1.0.15",
-    "tested_commit": "3dedda2a1f6e42885aa680aaadeebacbc0f62733"
+    "tested_tag": "v2.0.0",
+    "tested_commit": "565bc76b54edc15028ba0c9d545a7e60a81f9414"
   }
 }
